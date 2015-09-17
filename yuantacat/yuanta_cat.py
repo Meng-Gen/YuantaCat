@@ -3,6 +3,7 @@
 from yuantacat.pipeline.stock_symbol_pipeline import StockSymbolPipeline
 from yuantacat.pipeline.dividend_policy_pipeline import DividendPolicyPipeline
 from yuantacat.pipeline.capital_increase_history_pipeline import CapitalIncreaseHistoryPipeline
+from yuantacat.pipeline.profitability_pipeline import ProfitabilityPipeline
 
 import logging
 
@@ -23,3 +24,6 @@ class YuantaCat():
 
     def run_capital_increase_history(self):
         CapitalIncreaseHistoryPipeline().run()
+
+    def run_profitability(self):
+        ProfitabilityPipeline().run()
