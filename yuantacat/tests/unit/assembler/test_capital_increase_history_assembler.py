@@ -7,7 +7,7 @@ from yuantacat.common.file_utils import FileUtils
 import datetime
 import unittest
 
-class StockCapitalIncreaseHistoryAssemblerTest(unittest.TestCase):
+class CapitalIncreaseHistoryAssemblerTest(unittest.TestCase):
     def setUp(self):
         self.assembler = CapitalIncreaseHistoryAssembler()
         self.file_utils = FileUtils()
