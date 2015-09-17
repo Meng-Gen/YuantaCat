@@ -1,35 +1,17 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.pipeline.state.state_machine import StateMachine
-from yuantacat.pipeline.state.entry_list_helper import EntryListHelper
+from yuantacat.pipeline.pipeline import Pipeline
 from yuantacat.spider.dividend_policy_spider import DividendPolicySpider
 from yuantacat.assembler.dividend_policy_assembler import DividendPolicyAssembler
 from yuantacat.feed.dividend_policy_feed import DividendPolicyFeedBuilder
 
-import datetime
-
-class DividendPolicyPipeline(StateMachine):
-    def __init__(self, memento_path='./yuantacat/data/memento/dividend_policy.json'):
-        memento_param = {
-            'path' : memento_path, 
-            'default_value' : self.__get_default_value(),
-            'filter_key_list' : [ 'state', 'all_entry_list', 'todo_entry_list', 'last_updated_date' ],
-        }
-        param = {
-            'memento' : memento_param,
+class DividendPolicyPipeline(Pipeline):
+    def __init__(self):
+        param = { 
+            'memento_path' : './yuantacat/data/memento/dividend_policy.json',
+            'default_value_param' : 'stock_symbol',
             'spider' : DividendPolicySpider(), 
             'assembler' : DividendPolicyAssembler(), 
             'feed_builder' : DividendPolicyFeedBuilder(),
         }
-        StateMachine.__init__(self, param)
-
-    def __get_default_value(self):
-        stock_symbol_list = EntryListHelper().get_stock_symbol_list()
-        # !!! DEBUG ONLY !!!
-        stock_symbol_list = stock_symbol_list[:1]
-        return {
-            'state' : 'spider',
-            'all_entry_list' : list(stock_symbol_list),
-            'todo_entry_list' : list(stock_symbol_list),
-            'last_updated_date' : datetime.date(1949, 12, 7) 
-        }
+        Pipeline.__init__(self, param)
