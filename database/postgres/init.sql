@@ -68,3 +68,26 @@ WITH (
 );
 ALTER TABLE dividend_policy
   OWNER TO stockcat;  
+
+--------------------------------------------------------------------------------
+-- Table: profitability
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS profitability;
+
+CREATE TABLE profitability
+(
+  creation_dt timestamp without time zone DEFAULT now(),
+  release_date date NOT NULL,
+  stock_symbol text NOT NULL,
+  stmt_date date NOT NULL,
+  account text NOT NULL,
+  account_order smallint NOT NULL,
+  value double precision,
+  CONSTRAINT profitability_unique_key UNIQUE (release_date, stock_symbol, stmt_date, account, account_order)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE profitability
+  OWNER TO stockcat;

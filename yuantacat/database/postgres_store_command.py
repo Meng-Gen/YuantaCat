@@ -9,6 +9,7 @@ class PostgresStoreCommand():
             'StockSymbolFeed' : 'INSERT INTO stock_symbol(release_date,stock_symbol,stock_name,isin_code,listing_date,market_category,industry_category,cfi_code) VALUES (%(release_date)s, %(stock_symbol)s, %(stock_name)s, %(isin_code)s, %(listing_date)s, %(market_category)s, %(industry_category)s, %(cfi_code)s)',
             'CapitalIncreaseHistoryFeed' : 'INSERT INTO capital_increase_history(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
             'DividendPolicyFeed' : 'INSERT INTO dividend_policy(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
+            'ProfitabilityFeed' : 'INSERT INTO profitability(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
         }
 
     def store(self, feed):
