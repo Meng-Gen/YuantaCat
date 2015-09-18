@@ -2,6 +2,6 @@
 
 from yuantacat.dao.yuanta_dao import YuantaDao
 
-class DividendPolicyDao(YuantaDao):
+class ProfitabilityDao(YuantaDao):
     def __init__(self, column_name_list, row_list, stock_symbol):
         YuantaDao.__init__(self, column_name_list, row_list, stock_symbol)

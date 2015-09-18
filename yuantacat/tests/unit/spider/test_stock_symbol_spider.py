@@ -17,6 +17,6 @@ class StockSymbolSpiderTest(unittest.TestCase):
         self.assertTrue(self.spider.is_crawled(param))
 
     def test_crawl_otc_market(self):
-        param = { 'market_type' :  'otc_market' }
+        param = { 'market_type' : 'otc_market' }
         self.spider.crawl(param)
         self.assertTrue(self.spider.is_crawled(param))

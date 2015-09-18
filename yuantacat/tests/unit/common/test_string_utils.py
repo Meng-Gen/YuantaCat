@@ -97,6 +97,10 @@ class StringUtilsTest(unittest.TestCase):
         expected = datetime.date(2015, 12, 31)
         self.assertEqual(actual, expected)
 
+        actual = self.string_utils.from_local_string_to_date(u'104.2Q')
+        expected = datetime.date(2015, 6, 30)
+        self.assertEqual(actual, expected)
+
     def test_roc_era_from_local_string_to_date(self):
         actual = self.string_utils.from_local_string_to_date(u'99年09月30日')
         expected = datetime.date(2010, 9, 30)
@@ -104,40 +108,6 @@ class StringUtilsTest(unittest.TestCase):
 
         actual = self.string_utils.from_local_string_to_date(u'102/05/07')
         expected = datetime.date(2013, 5, 7)
-        self.assertEqual(actual, expected)
-
-    def test_from_local_string_to_date_interval(self):
-        actual = self.string_utils.from_local_string_to_date_period(u'2013年01月01日至2013年12月31日')
-        expected = datetime.date(2013, 1, 1), datetime.date(2013, 12, 31)
-        self.assertEqual(actual, expected)
-
-    def test_roc_era_from_local_string_to_date_period(self):
-        actual = self.string_utils.from_local_string_to_date_period(u'九十八年前三季')
-        expected = datetime.date(2009, 1, 1), datetime.date(2009, 9, 30)
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.from_local_string_to_date_period(u'九十八年第一季')
-        expected = datetime.date(2009, 1, 1), datetime.date(2009, 3, 31)
-        self.assertEqual(actual, expected)
-        
-        actual = self.string_utils.from_local_string_to_date_period(u'100年第一季')
-        expected = datetime.date(2011, 1, 1), datetime.date(2011, 3, 31)
-        self.assertEqual(actual, expected)
-        
-        actual = self.string_utils.from_local_string_to_date_period(u'100年上半年度')
-        expected = datetime.date(2011, 1, 1), datetime.date(2011, 6, 30)
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.from_local_string_to_date_period(u'99年上半年度')
-        expected = datetime.date(2010, 1, 1), datetime.date(2010, 6, 30)
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.from_local_string_to_date_period(u'100年前三季')
-        expected = datetime.date(2011, 1, 1), datetime.date(2011, 9, 30)
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.from_local_string_to_date_period(u'100年度')
-        expected = datetime.date(2011, 1, 1), datetime.date(2011, 12, 31)
         self.assertEqual(actual, expected)
 
     def test_from_date_to_roc_era_string(self):
@@ -227,12 +197,6 @@ class StringUtilsTest(unittest.TestCase):
         actual = self.string_utils.from_date_to_1_digit_quarter_string(datetime.date(2001, 12, 31))
         expected = '4'
         self.assertEqual(actual, expected)
-
-    def test_is_match_seperation(self):
-        pattern = u'^(-| |=)*$'
-        self.assertTrue(self.string_utils.is_match(pattern, u'======      ======'))
-        self.assertTrue(self.string_utils.is_match(pattern, u'------      ------'))
-        self.assertFalse(self.string_utils.is_match(pattern, u'同時影響現金及非現金項目之投資活動：'))
 
     def test_match_account(self):
         pattern = u'^([^\s]*)：$'
