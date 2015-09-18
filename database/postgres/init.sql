@@ -91,3 +91,26 @@ WITH (
 );
 ALTER TABLE profitability
   OWNER TO stockcat;
+
+--------------------------------------------------------------------------------
+-- Table: operating_revenue
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS operating_revenue;
+
+CREATE TABLE operating_revenue
+(
+  creation_dt timestamp without time zone DEFAULT now(),
+  release_date date NOT NULL,
+  stock_symbol text NOT NULL,
+  stmt_date date NOT NULL,
+  account text NOT NULL,
+  account_order smallint NOT NULL,
+  value double precision,
+  CONSTRAINT operating_revenue_unique_key UNIQUE (release_date, stock_symbol, stmt_date, account, account_order)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE operating_revenue
+  OWNER TO stockcat;

@@ -151,7 +151,17 @@ class DateBuilder():
         except AttributeError:
             return self.__build_step_6(local_string)
 
-    def __build_step_6(self, local_string):
+    def __build_step_6(self, local_string):    
+        try:
+            m = re.search('^(\d{2,3})/0?(\d{1,2})$', local_string)
+            year = int(m.group(1)) + 1911 # expect roc era
+            month = int(m.group(2))
+            day = self.date_utils.get_last_day_of_month(year, month)
+            return datetime.date(year, month, day)
+        except AttributeError:
+            return self.__build_step_7(local_string)
+
+    def __build_step_7(self, local_string):
         m = re.search(u'^民國(\d{2,3})年(\d+)月$', local_string)
         year = int(m.group(1)) + 1911 # expect roc era
         month = int(m.group(2))
