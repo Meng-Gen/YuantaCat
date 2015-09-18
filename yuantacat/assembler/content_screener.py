@@ -34,3 +34,5 @@ class ContentScreener():
                 raise NoRecordAssembleError(param)
         if u'系統通告' in decoded:
             raise NoRecordAssembleError(param)
+        if u'<p>無資料' in decoded:
+            raise NoRecordAssembleError(param)
