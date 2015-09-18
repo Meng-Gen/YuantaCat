@@ -5,13 +5,8 @@ from yuantacat.spider.capital_increase_history_spider import CapitalIncreaseHist
 import unittest
 
 class CapitalIncreaseHistorySpiderTest(unittest.TestCase):
-    def setUp(self):
-        self.spider = CapitalIncreaseHistorySpider()
-
-    def tearDown(self):
-        self.spider = None
-
     def test_crawl_2498(self):
+        spider = CapitalIncreaseHistorySpider()
         param = { 'stock_symbol' : '2498' }
-        self.spider.crawl(param)
-        self.assertTrue(self.spider.is_crawled(param))
+        spider.crawl(param)
+        self.assertTrue(spider.is_crawled(param))
