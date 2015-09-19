@@ -9,6 +9,8 @@ from yuantacat.pipeline.balance_sheet_pipeline import BalanceSheetQuarterlyPipel
 from yuantacat.pipeline.balance_sheet_pipeline import BalanceSheetYearlyPipeline
 from yuantacat.pipeline.income_statement_pipeline import IncomeStatementQuarterlyPipeline
 from yuantacat.pipeline.income_statement_pipeline import IncomeStatementYearlyPipeline
+from yuantacat.pipeline.cash_flow_pipeline import CashFlowQuarterlyPipeline
+from yuantacat.pipeline.cash_flow_pipeline import CashFlowYearlyPipeline
 
 import logging
 
@@ -23,7 +25,8 @@ class YuantaCat():
         #self.run_profitability()
         #self.run_operating_revenue()
         #self.run_balance_sheet()
-        self.run_income_statement()
+        #self.run_income_statement()
+        self.run_cash_flow()
 
     def run_stock_symbol(self):
         StockSymbolPipeline().run()
@@ -47,3 +50,7 @@ class YuantaCat():
     def run_income_statement(self):
         IncomeStatementQuarterlyPipeline().run()
         IncomeStatementYearlyPipeline().run()
+
+    def run_cash_flow(self):
+        CashFlowQuarterlyPipeline().run()
+        CashFlowYearlyPipeline().run()

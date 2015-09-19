@@ -7,16 +7,16 @@ from yuantacat.common.lxml_utils import LxmlUtils
 import lxml.html
 
 class FinancialStatementAssembler():
-    def __init__(self, period):
-        self.base_xpath = self.__init_base_xpath(period)
+    def __init__(self, base_xpath_param):
+        self.base_xpath = self.__init_base_xpath(base_xpath_param)
         self.content_screener = ContentScreener()
         self.string_utils = StringUtils()
         self.lxml_utils = LxmlUtils()
 
-    def __init_base_xpath(self, period):
-        if period == 'quarterly':
+    def __init_base_xpath(self, base_xpath_param):
+        if base_xpath_param == 'basic':
             return '//html/body/div[@id="SysJustIFRAMEDIV"]/table/tr/td/table/tr/td/table'
-        elif period == 'yearly':
+        elif base_xpath_param == 'form':
             return '//html/body/div[@id="SysJustIFRAMEDIV"]/table/tr/td/form/table/tr/td/table'
 
     def assemble(self, param):

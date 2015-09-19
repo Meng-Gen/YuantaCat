@@ -14,6 +14,7 @@ class PostgresStoreCommand():
             'BalanceSheetSummaryFeed' : 'INSERT INTO balance_sheet_summary(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
             'BalanceSheetFeed' : 'INSERT INTO balance_sheet(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
             'IncomeStatementFeed' : 'INSERT INTO income_statement(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
+            'CashFlowFeed' : 'INSERT INTO cash_flow(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
         }
 
     def store(self, feed):
