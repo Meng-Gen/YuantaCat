@@ -7,8 +7,9 @@ from yuantacat.common.lxml_utils import LxmlUtils
 import lxml.html
 
 class FinancialStatementAssembler():
-    def __init__(self, base_xpath_param):
+    def __init__(self, base_xpath_param, column_name_pos=0):
         self.base_xpath = self.__init_base_xpath(base_xpath_param)
+        self.column_name_pos = column_name_pos
         self.content_screener = ContentScreener()
         self.string_utils = StringUtils()
         self.lxml_utils = LxmlUtils()
@@ -46,9 +47,9 @@ class FinancialStatementAssembler():
     def __assemble_column_name_list(self, relative_html_object):
         # traverse and sanity check
         tr_tags = relative_html_object.xpath('./tr')
-        assert len(tr_tags) > 0, 'invalid tr_tags'
+        assert len(tr_tags) > self.column_name_pos, 'invalid tr_tags'
 
-        td_texts = tr_tags[0].xpath('./td/text()')
+        td_texts = tr_tags[self.column_name_pos].xpath('./td/text()')
 
         # the first entry should be account
         column_name_list = [td_texts[0]]
@@ -62,13 +63,17 @@ class FinancialStatementAssembler():
 
     def __assemble_row_list(self, relative_html_object):
         tr_tags = relative_html_object.xpath('./tr')
-        assert len(tr_tags) > 1, 'invalid tr_tags'
+        assert len(tr_tags) > self.column_name_pos + 1, 'invalid tr_tags'
 
-        return [self.__assemble_row(tr_tag) for tr_tag in tr_tags[1:]]
+        return [self.__assemble_row(tr_tag) for tr_tag in tr_tags[self.column_name_pos + 1:]]
 
     def __assemble_row(self, relative_html_object):
         td_tags = relative_html_object.xpath('./td')
         td_texts = self.lxml_utils.get_text_list(td_tags)
+
+        # return empty row if empty
+        if not td_texts:
+            return []
 
         # the first entry should be account
         row = [td_texts[0].strip()]

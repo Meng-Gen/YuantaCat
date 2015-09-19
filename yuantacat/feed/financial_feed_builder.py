@@ -10,6 +10,8 @@ class FinancialFeedBuilder():
         stmt_date_list = dao.get_column_name_list()
         row_list = dao.get_row_list()
         for i in range(len(row_list)):
+            if not row_list[i]:
+                continue
             account = row_list[i][0]
             for j in range(1, len(row_list[i])):
                 entry = {

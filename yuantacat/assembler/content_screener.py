@@ -40,6 +40,8 @@ class ContentScreener():
                 raise NoRecordAssembleError(param)
             if u'查無(%s)現金流量表資料' % (param['stock_symbol']) in decoded:
                 raise NoRecordAssembleError(param)
+            if u'查無(%s)財務比率表資料(合併年表)' % (param['stock_symbol']) in decoded:
+                raise NoRecordAssembleError(param)
             if u'(%s)個股代碼錯誤' % (param['stock_symbol']) in decoded:
                 raise NoRecordAssembleError(param)
         if u'系統通告' in decoded:
