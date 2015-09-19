@@ -54,17 +54,8 @@ class StringUtilsTest(unittest.TestCase):
         expected = None
         self.assertEqual(actual, expected)
 
-    def test_normalize_chinese_number(self):
-        actual = self.string_utils.normalize_number(u'九十九')
-        expected = 99
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.normalize_number(u'九十')
-        expected = 90
-        self.assertEqual(actual, expected)
-
-        actual = self.string_utils.normalize_number(u'三')
-        expected = 3
+        actual = self.string_utils.normalize_number(u'N/A')
+        expected = None
         self.assertEqual(actual, expected)
 
     def test_normalize_percentage(self):

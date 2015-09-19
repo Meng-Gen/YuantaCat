@@ -28,30 +28,6 @@ class StringBuilder():
         return local_string.decode('gb18030')
 
 class NumberBuilder():
-    def __init__(self):
-        self.chinese_value = {
-            u'ㄧ' : 1,
-            u'二' : 2,
-            u'三' : 3,
-            u'四' : 4,
-            u'五' : 5,
-            u'六' : 6,
-            u'七' : 7,
-            u'八' : 8,
-            u'九' : 9,
-            u'十' : 10,
-        }
-
-    def build_chinese_number(self, number_string):
-        number = 0
-        for digit in number_string:
-            n = self.chinese_value[digit]
-            if n < 10:
-                number += n
-            else:
-                number *= n
-        return number
-
     def build(self, number_string):
         # remove comma style
         number_string = number_string.replace(',', '')
@@ -82,13 +58,10 @@ class NumberBuilder():
             return self.__build_step_4(number_string)
 
     def __build_step_4(self, number_string):
-        if number_string.strip() in [u'-', u'', u'不適用']:
+        if number_string.strip() in [u'-', u'', u'不適用', u'N/A']:
             return None
         else: 
-            return self.__build_step_5(number_string)
-
-    def __build_step_5(self, number_string):
-        return self.build_chinese_number(number_string)
+            raise ValueError
 
 class DateBuilder(): 
     def __init__(self):

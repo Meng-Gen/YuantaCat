@@ -30,6 +30,12 @@ class ContentScreener():
         if 'stock_symbol' in param:
             if u'查無(%s)股本形成資料' % (param['stock_symbol']) in decoded:
                 raise NoRecordAssembleError(param)
+            if u'查無(%s) 資產負債簡表(合併財報)（季表）資料' % (param['stock_symbol']) in decoded:
+                raise NoRecordAssembleError(param)
+            if u'查無(%s)資產負債表(合併財報)資料' % (param['stock_symbol']) in decoded:
+                raise NoRecordAssembleError(param)
+            if u'查無(%s)資產負債表（合併年表）資料' % (param['stock_symbol']) in decoded:
+                raise NoRecordAssembleError(param)
             if u'(%s)個股代碼錯誤' % (param['stock_symbol']) in decoded:
                 raise NoRecordAssembleError(param)
         if u'系統通告' in decoded:

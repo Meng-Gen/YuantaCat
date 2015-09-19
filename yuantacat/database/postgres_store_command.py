@@ -12,8 +12,7 @@ class PostgresStoreCommand():
             'ProfitabilityFeed' : 'INSERT INTO profitability(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
             'OperatingRevenueFeed' : 'INSERT INTO operating_revenue(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
             'BalanceSheetSummaryFeed' : 'INSERT INTO balance_sheet_summary(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
-            'BalanceSheetQuarterlyFeed' : 'INSERT INTO balance_sheet(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
-            'BalanceSheetYearlyFeed' : 'INSERT INTO balance_sheet(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
+            'BalanceSheetFeed' : 'INSERT INTO balance_sheet(release_date,stock_symbol,stmt_date,account,account_order,value) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s)',
         }
 
     def store(self, feed):

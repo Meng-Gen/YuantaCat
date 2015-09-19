@@ -7,19 +7,13 @@ import datetime
 import unittest
 
 class StockSymbolAssemblerTest(unittest.TestCase):
-    def setUp(self):
-        self.assembler = StockSymbolAssembler()
-        self.file_utils = FileUtils()
-
-    def tearDown(self):
-        self.assembler = None
-        self.file_utils = None
-    
     def test_assemble_stock_exchange_market(self):
         # online: http://isin.twse.com.tw/isin/C_public.jsp?strMode=2 
         path = './yuantacat/tests/unit/data/stock_symbol/stock_exchange_market.html'
-        param = { 'content' : self.file_utils.read_file(path) }
-        dao = self.assembler.assemble(param)
+        param = { 
+            'content' : FileUtils().read_file(path) 
+        }
+        dao = StockSymbolAssembler().assemble(param)
 
         actual = dao.get_column_name_list()
         expected = [u'有價證券代號', u'名稱', u'國際證券辨識號碼(ISIN Code)', u'上市日', u'市場別', u'產業別', u'CFICode', u'備註']
@@ -35,8 +29,10 @@ class StockSymbolAssemblerTest(unittest.TestCase):
     def test_assemble_otc_market(self):
         # online: http://isin.twse.com.tw/isin/C_public.jsp?strMode=4
         path = './yuantacat/tests/unit/data/stock_symbol/otc_market.html'
-        param = { 'content' : self.file_utils.read_file(path) }
-        dao = self.assembler.assemble(param)
+        param = { 
+            'content' : FileUtils().read_file(path)
+        }
+        dao = StockSymbolAssembler().assemble(param)
 
         actual = dao.get_column_name_list()
         expected = [u'有價證券代號', u'名稱', u'國際證券辨識號碼(ISIN Code)', u'上市日', u'市場別', u'產業別', u'CFICode', u'備註']
