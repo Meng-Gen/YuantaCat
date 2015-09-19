@@ -5,12 +5,12 @@ from yuantacat.assembler.financial_statement_assembler import FinancialStatement
 
 class IncomeStatementQuarterlyAssembler():
     def assemble(self, param):
-        assembler = FinancialStatementAssembler('quarterly')
+        assembler = FinancialStatementAssembler('basic')
         dao = assembler.assemble(param)
         return IncomeStatementDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
 
 class IncomeStatementYearlyAssembler():
     def assemble(self, param):
-        assembler = FinancialStatementAssembler('yearly')
+        assembler = FinancialStatementAssembler('form')
         dao = assembler.assemble(param)
         return IncomeStatementDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
