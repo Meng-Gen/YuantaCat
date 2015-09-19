@@ -1,16 +1,16 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.dao.balance_sheet_dao import BalanceSheetDao
+from yuantacat.dao.income_statement_dao import IncomeStatementDao
 from yuantacat.assembler.financial_statement_assembler import FinancialStatementAssembler
 
-class BalanceSheetQuarterlyAssembler():
+class IncomeStatementQuarterlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('quarterly')
         dao = assembler.assemble(param)
-        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return IncomeStatementDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
 
-class BalanceSheetYearlyAssembler():
+class IncomeStatementYearlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('yearly')
         dao = assembler.assemble(param)
-        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return IncomeStatementDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
