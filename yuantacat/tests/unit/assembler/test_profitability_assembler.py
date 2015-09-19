@@ -8,22 +8,14 @@ import datetime
 import unittest
 
 class ProfitabilityAssemblerTest(unittest.TestCase):
-    def setUp(self):
-        self.assembler = ProfitabilityAssembler()
-        self.file_utils = FileUtils()
-
-    def tearDown(self):
-        self.assembler = None
-        self.file_utils = None
-    
     def test_assemble_2498(self):
         # online: http://jdata.yuanta.com.tw/z/zc/zce/zce_2498.djhtm
         path = './yuantacat/tests/unit/data/profitability/2498.html'
         param = {
-            'content' : self.file_utils.read_file(path),
+            'content' : FileUtils().read_file(path),
             'stock_symbol' : '2498'
         }
-        dao = self.assembler.assemble(param)
+        dao = ProfitabilityAssembler().assemble(param)
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
@@ -40,9 +32,9 @@ class ProfitabilityAssemblerTest(unittest.TestCase):
         # online: http://jdata.yuanta.com.tw/z/zc/zce/zce_3009.djhtm
         path = './yuantacat/tests/unit/data/error/profitability_not_found_error.html'
         param = {
-            'content' : self.file_utils.read_file(path),
+            'content' : FileUtils().read_file(path),
             'stock_symbol' : '3009'
         }
         with self.assertRaises(NoRecordAssembleError) as context:
-            self.assembler.assemble(param)
+            ProfitabilityAssembler().assemble(param)
         self.assertEqual(context.exception.param['stock_symbol'], param['stock_symbol'])   

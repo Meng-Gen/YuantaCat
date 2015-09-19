@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from yuantacat.common.string_utils import StringUtils
+from yuantacat.common.lxml_utils import LxmlUtils
 from yuantacat.dao.stock_symbol_dao import StockSymbolDao
 
 import lxml.html
@@ -9,6 +10,7 @@ class StockSymbolAssembler():
     def __init__(self):
         self.base_xpath = '//html/body'
         self.string_utils = StringUtils()
+        self.lxml_utils = LxmlUtils()
 
     def assemble(self, param):
         content = self.string_utils.normalize_string(param['content'])
@@ -72,10 +74,7 @@ class StockSymbolAssembler():
 
     def __assemble_row(self, relative_html_object):
         td_tags = relative_html_object.xpath('./td')
-
-        # we could not handle empty string between td tag if we use xpath './td/text()' 
-        # so we need to check each td.text one by one.
-        td_texts = self.__get_lxml_text_list(td_tags)
+        td_texts = self.lxml_utils.get_text_list(td_tags)
 
         # if there is only one cell '股票', return None
         if len(td_texts) == 1:
@@ -95,12 +94,3 @@ class StockSymbolAssembler():
 
         row = seperated_cell_list + [td_texts[1]] + [listing_date] + td_texts[3:]
         return row
-
-    def __get_lxml_text_list(self, tag_list):
-        text_list = []
-        for tag in tag_list:
-            if tag.text is None:
-                text_list.append('')
-            else:
-                text_list.append(tag.text)
-        return text_list

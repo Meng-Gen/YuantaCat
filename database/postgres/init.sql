@@ -114,3 +114,49 @@ WITH (
 );
 ALTER TABLE operating_revenue
   OWNER TO stockcat;
+
+--------------------------------------------------------------------------------
+-- Table: balance_sheet
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS balance_sheet;
+
+CREATE TABLE balance_sheet
+(
+  creation_dt timestamp without time zone DEFAULT now(),
+  release_date date NOT NULL,
+  stock_symbol text NOT NULL,
+  stmt_date date NOT NULL,
+  account text NOT NULL,
+  account_order smallint NOT NULL,
+  value double precision,
+  CONSTRAINT balance_sheet_unique_key UNIQUE (release_date, stock_symbol, stmt_date, account, account_order)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE balance_sheet
+  OWNER TO stockcat;
+
+--------------------------------------------------------------------------------
+-- Table: balance_sheet_summary
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS balance_sheet_summary;
+
+CREATE TABLE balance_sheet_summary
+(
+  creation_dt timestamp without time zone DEFAULT now(),
+  release_date date NOT NULL,
+  stock_symbol text NOT NULL,
+  stmt_date date NOT NULL,
+  account text NOT NULL,
+  account_order smallint NOT NULL,
+  value double precision,
+  CONSTRAINT balance_sheet_summary_unique_key UNIQUE (release_date, stock_symbol, stmt_date, account, account_order)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE balance_sheet_summary
+  OWNER TO stockcat;

@@ -8,22 +8,14 @@ import datetime
 import unittest
 
 class CapitalIncreaseHistoryAssemblerTest(unittest.TestCase):
-    def setUp(self):
-        self.assembler = CapitalIncreaseHistoryAssembler()
-        self.file_utils = FileUtils()
-
-    def tearDown(self):
-        self.assembler = None
-        self.file_utils = None
-    
     def test_assemble_2498(self):
         # online: http://jdata.yuanta.com.tw/z/zc/zcb/zcb_2498.djhtm
         path = './yuantacat/tests/unit/data/capital_increase_history/2498.html'
         param = {
-            'content' : self.file_utils.read_file(path),
+            'content' : FileUtils().read_file(path),
             'stock_symbol' : '2498'
         }
-        dao = self.assembler.assemble(param)
+        dao = CapitalIncreaseHistoryAssembler().assemble(param)
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
@@ -40,9 +32,9 @@ class CapitalIncreaseHistoryAssemblerTest(unittest.TestCase):
         # online: http://jdata.yuanta.com.tw/z/zc/zcb/zcb_3009.djhtm
         path = './yuantacat/tests/unit/data/error/capital_increase_history_not_found_error.html'
         param = {
-            'content' : self.file_utils.read_file(path),
+            'content' : FileUtils().read_file(path),
             'stock_symbol' : '3009'
         }
         with self.assertRaises(NoRecordAssembleError) as context:
-            self.assembler.assemble(param)
+            CapitalIncreaseHistoryAssembler().assemble(param)
         self.assertEqual(context.exception.param['stock_symbol'], param['stock_symbol'])   
