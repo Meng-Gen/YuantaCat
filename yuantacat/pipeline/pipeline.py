@@ -42,8 +42,6 @@ class Pipeline(StateMachine):
 
     def __get_stock_symbol_default_value(self):
         stock_symbol_list = EntryListHelper().get_stock_symbol_list()
-        # !!! DEBUG ONLY !!!
-        stock_symbol_list = stock_symbol_list[:1]
         return {
             'state' : 'spider',
             'all_entry_list' : list(stock_symbol_list),
