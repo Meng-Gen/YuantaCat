@@ -28,8 +28,11 @@ class DatabaseState(State):
             self.logger.info('store: {0} (progress: {1}/{2})'.format(entry, curr_count, entry_count))
 
             # store
-            feed = self.feed_builder.build(dao[str(entry)])
-            self.database.store(feed)                
+            try:
+                feed = self.feed_builder.build(dao[str(entry)])
+                self.database.store(feed)                
+            except Exception as e:
+                self.logger.error(e)
 
             # update todo entry list
             self.todo_entry_list.remove(entry)

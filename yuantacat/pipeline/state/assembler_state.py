@@ -35,12 +35,12 @@ class AssemblerState(State):
             except Exception as e:
                 self.logger.error(e)
 
+            # update todo entry list
+            self.todo_entry_list.remove(entry)
+
             # avoid exceptional shutdown
             if curr_count % 10 == 0:
                 self.tear_down()
-
-            # update todo entry list
-            self.todo_entry_list.remove(entry)
         
         self.tear_down()
 
