@@ -19,6 +19,8 @@ class OperatingRevenueAssemblerTest(unittest.TestCase):
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
+        self.assertEqual(dao.get_period(), 'M')
+
         actual = dao.get_column_name_list()
         expected = [u'年/月', u'合併營收', u'月增率', u'去年同期', u'年增率', u'累計營收', u'年增率']
         self.assertEqual(actual, expected)

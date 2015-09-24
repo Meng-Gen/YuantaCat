@@ -22,7 +22,12 @@ class BalanceSheetSummaryAssembler():
         relative_html_object = self.__traverse_to_relative_html_object(html_object)
         column_name_list = self.__assemble_column_name_list(relative_html_object)
         row_list = self.__assemble_row_list(relative_html_object)
-        return BalanceSheetSummaryDao(column_name_list, row_list, stock_symbol)
+        short_period = None
+        if self.period == 'quarterly':
+            short_period = 'Q'
+        elif self.period == 'yearly':
+            short_period = 'Y'
+        return BalanceSheetSummaryDao(column_name_list, row_list, stock_symbol, short_period)
 
     def __get_html_object(self, content):
         content = self.string_utils.normalize_string(content)

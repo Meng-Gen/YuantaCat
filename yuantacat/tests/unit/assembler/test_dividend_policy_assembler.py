@@ -19,6 +19,8 @@ class DividendPolicyAssemblerTest(unittest.TestCase):
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
+        self.assertEqual(dao.get_period(), 'Y')
+
         actual = dao.get_column_name_list()
         expected = [u'年度', u'現金股利', u'盈餘配股', u'公積配股', u'股票股利', u'合計', u'員工配股率%']
         self.assertEqual(actual, expected)

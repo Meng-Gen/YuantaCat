@@ -19,7 +19,7 @@ class DividendPolicyAssembler():
         relative_html_object = self.__traverse_to_relative_html_object(html_object)
         column_name_list = self.__assemble_column_name_list(relative_html_object)
         row_list = self.__assemble_row_list(relative_html_object)
-        return DividendPolicyDao(column_name_list, row_list, stock_symbol)
+        return DividendPolicyDao(column_name_list, row_list, stock_symbol, 'Y')
 
     def __get_html_object(self, content):
         content = self.string_utils.normalize_string(content)

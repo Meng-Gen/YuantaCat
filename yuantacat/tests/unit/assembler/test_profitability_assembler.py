@@ -19,6 +19,8 @@ class ProfitabilityAssemblerTest(unittest.TestCase):
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
+        self.assertEqual(dao.get_period(), 'Q')
+
         actual = dao.get_column_name_list()
         expected = [u'季別', u'營業收入', u'營業成本', u'營業毛利', u'毛利率', u'營業利益', u'營益率', u'業外收支', u'稅前淨利', u'稅後淨利']
         self.assertEqual(actual, expected)
