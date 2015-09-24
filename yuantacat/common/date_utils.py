@@ -4,6 +4,14 @@ import calendar
 import datetime
 
 class DateUtils():
+    def get_first_date_of_year(self, date):
+        year = date.year
+        return datetime.date(year, 1, 1)
+
+    def get_last_date_of_year(self, date):
+        year = date.year
+        return datetime.date(year, 12, 31)
+
     def get_first_date_of_month(self, date):
         year = date.year
         month = date.month
@@ -59,3 +67,13 @@ class DateUtils():
     def now_date(self):
         now = datetime.datetime.now()
         return datetime.date(now.year, now.month, now.day)
+
+    def get_day_number(self, date):
+        date_diff = date - self.get_first_date_of_year(date)
+        return date_diff.days + 1
+
+    def get_total_day_number(self, date):
+        first = self.get_first_date_of_year(date)
+        last = self.get_last_date_of_year(date)
+        date_diff = last - first
+        return date_diff.days + 1

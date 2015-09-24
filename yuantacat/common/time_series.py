@@ -1,5 +1,9 @@
 #-*- coding: utf-8 -*-
 
+from yuantacat.common.date_utils import DateUtils
+
+import operator
+
 class TimeSeries(object):
     @staticmethod
     def create(records):
@@ -39,6 +43,7 @@ class TimeSeries(object):
 
     def __init__(self, time_series):
         self.time_series = sorted(time_series)
+        self.date_utils = DateUtils()
 
     def get(self):
         return self.time_series
@@ -76,38 +81,32 @@ class TimeSeries(object):
             output.append((stmt_date, z))
         return TimeSeries(output)
 
-    def add(self, other_time_series):
+    def execute_binary_operation(self, operator, other_time_series):
         output = []
         other_map = other_time_series.get_map()
         for stmt_date, value in self.time_series:
             if stmt_date in other_map:
-                z = float(value) + float(other_map[stmt_date])
+                z = operator(float(value), float(other_map[stmt_date]))
                 output.append((stmt_date, z))
         return TimeSeries(output)
+
+    def add(self, other_time_series):
+        return self.execute_binary_operation(operator.add, other_time_series)
 
     def minus(self, other_time_series):
-        output = []
-        other_map = other_time_series.get_map()
-        for stmt_date, value in self.time_series:
-            if stmt_date in other_map:
-                z = float(value) - float(other_map[stmt_date])
-                output.append((stmt_date, z))
-        return TimeSeries(output)
+        return self.execute_binary_operation(operator.sub, other_time_series)
 
     def divide(self, other_time_series):
-        output = []
-        other_map = other_time_series.get_map()
-        for stmt_date, value in self.time_series:
-            if stmt_date in other_map:
-                z = float(value) / float(other_map[stmt_date])
-                output.append((stmt_date, z))
-        return TimeSeries(output)
+        return self.execute_binary_operation(operator.truediv, other_time_series)
 
     def multiply(self, other_time_series):
+        return self.execute_binary_operation(operator.mul, other_time_series)
+
+    def annualize(self):
         output = []
-        other_map = other_time_series.get_map()
         for stmt_date, value in self.time_series:
-            if stmt_date in other_map:
-                z = float(value) * float(other_map[stmt_date])
-                output.append((stmt_date, z))
+            total_day_number = self.date_utils.get_total_day_number(stmt_date)
+            day_number = self.date_utils.get_day_number(stmt_date)
+            z = float(total_day_number) / float(day_number) * value
+            output.append((stmt_date, z))
         return TimeSeries(output)
