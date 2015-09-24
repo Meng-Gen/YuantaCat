@@ -49,6 +49,20 @@ class TimeSeries(object):
             output[stmt_date] = value
         return output
 
+    def scalar(self, c):
+        output = []
+        for stmt_date, value in self.time_series:
+            z = c * float(value) 
+            output.append((stmt_date, z))
+        return TimeSeries(output)
+
+    def get_inverse(self):
+        output = []
+        for stmt_date, value in self.time_series:
+            z = 1.0 / float(value) 
+            output.append((stmt_date, z))
+        return TimeSeries(output)
+
     def get_average(self):
         return self.get_moving_average(2)
 
@@ -58,15 +72,42 @@ class TimeSeries(object):
         for i in range(count):
             stmt_date = self.time_series[i][0]
             value_list = [self.time_series[i][1] for i in range(max(i - n + 1, 0), i + 1)]
-            average_value = float(sum(value_list)) / float(len(value_list))
-            output.append((stmt_date, average_value))
+            z = float(sum(value_list)) / float(len(value_list))
+            output.append((stmt_date, z))
         return TimeSeries(output)
 
-    def get_ratio(self, other_time_series):
+    def add(self, other_time_series):
         output = []
         other_map = other_time_series.get_map()
         for stmt_date, value in self.time_series:
             if stmt_date in other_map:
-                ratio = float(value) / float(other_map[stmt_date])
-                output.append((stmt_date, ratio))
+                z = float(value) + float(other_map[stmt_date])
+                output.append((stmt_date, z))
+        return TimeSeries(output)
+
+    def minus(self, other_time_series):
+        output = []
+        other_map = other_time_series.get_map()
+        for stmt_date, value in self.time_series:
+            if stmt_date in other_map:
+                z = float(value) - float(other_map[stmt_date])
+                output.append((stmt_date, z))
+        return TimeSeries(output)
+
+    def divide(self, other_time_series):
+        output = []
+        other_map = other_time_series.get_map()
+        for stmt_date, value in self.time_series:
+            if stmt_date in other_map:
+                z = float(value) / float(other_map[stmt_date])
+                output.append((stmt_date, z))
+        return TimeSeries(output)
+
+    def multiply(self, other_time_series):
+        output = []
+        other_map = other_time_series.get_map()
+        for stmt_date, value in self.time_series:
+            if stmt_date in other_map:
+                z = float(value) * float(other_map[stmt_date])
+                output.append((stmt_date, z))
         return TimeSeries(output)
