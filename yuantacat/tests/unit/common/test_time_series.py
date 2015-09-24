@@ -13,11 +13,25 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2015, 8, 31), datetime.date(2001, 12, 31), 3), 
         ]
         time_series = TimeSeries.create(records).get()
-        self.assertEqual(len(time_series), 2)
-        self.assertEqual(time_series[0], (datetime.date(2001, 12, 31), 2))
-        self.assertEqual(time_series[1], (datetime.date(2002, 12, 31), 1))
+        self.assertEqual(time_series, [
+            (datetime.date(2001, 12, 31), 2),
+            (datetime.date(2002, 12, 31), 1),
+        ])
 
-    def test_average(self):
+    def test_get_map(self):
+        time_series = TimeSeries([
+            (datetime.date(2001, 12, 31), 1),
+            (datetime.date(2002, 12, 31), 2),
+            (datetime.date(2003, 12, 31), 3),
+        ])
+        time_series_map = time_series.get_map()
+        self.assertEqual(time_series_map, {
+            datetime.date(2001, 12, 31) : 1,
+            datetime.date(2002, 12, 31) : 2,
+            datetime.date(2003, 12, 31) : 3,
+        })
+
+    def test_get_average(self):
         time_series = TimeSeries([
             (datetime.date(2001, 12, 31), 1),
             (datetime.date(2002, 12, 31), 2),
@@ -25,10 +39,29 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2004, 12, 31), 4),
             (datetime.date(2005, 12, 31), 6),
         ])
-        averaged = time_series.average().get()
-        self.assertEqual(len(averaged), 5)
-        self.assertEqual(averaged[0], (datetime.date(2001, 12, 31), 1))
-        self.assertEqual(averaged[1], (datetime.date(2002, 12, 31), 1.5))
-        self.assertEqual(averaged[2], (datetime.date(2003, 12, 31), 2.5))
-        self.assertEqual(averaged[3], (datetime.date(2004, 12, 31), 3.5))
-        self.assertEqual(averaged[4], (datetime.date(2005, 12, 31), 5))
+        averaged = time_series.get_average().get()
+        self.assertEqual(averaged, [
+            (datetime.date(2001, 12, 31), 1),
+            (datetime.date(2002, 12, 31), 1.5),
+            (datetime.date(2003, 12, 31), 2.5),
+            (datetime.date(2004, 12, 31), 3.5),
+            (datetime.date(2005, 12, 31), 5),
+        ])
+
+    def test_get_ratio(self):
+        x = TimeSeries([
+            (datetime.date(2001, 12, 31), 1),
+            (datetime.date(2002, 12, 31), 2),
+            (datetime.date(2003, 12, 31), 3),
+        ])
+        y = TimeSeries([
+            (datetime.date(2001, 12, 31), 5),
+            (datetime.date(2002, 12, 31), 2),
+            (datetime.date(2003, 12, 31), 1),
+        ])
+        ratio = x.get_ratio(y).get()
+        self.assertEqual(ratio, [
+            (datetime.date(2001, 12, 31), 0.2), 
+            (datetime.date(2002, 12, 31), 1.0),
+            (datetime.date(2003, 12, 31), 3.0),
+        ])

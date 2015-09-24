@@ -43,10 +43,16 @@ class TimeSeries(object):
     def get(self):
         return self.time_series
 
-    def average(self):
-        return self.moving_average(2)
+    def get_map(self):
+        output = {}
+        for stmt_date, value in self.time_series:
+            output[stmt_date] = value
+        return output
 
-    def moving_average(self, n):
+    def get_average(self):
+        return self.get_moving_average(2)
+
+    def get_moving_average(self, n):
         output = []
         count = len(self.time_series)
         for i in range(count):
@@ -54,4 +60,13 @@ class TimeSeries(object):
             value_list = [self.time_series[i][1] for i in range(max(i - n + 1, 0), i + 1)]
             average_value = float(sum(value_list)) / float(len(value_list))
             output.append((stmt_date, average_value))
+        return TimeSeries(output)
+
+    def get_ratio(self, other_time_series):
+        output = []
+        other_map = other_time_series.get_map()
+        for stmt_date, value in self.time_series:
+            if stmt_date in other_map:
+                ratio = float(value) / float(other_map[stmt_date])
+                output.append((stmt_date, ratio))
         return TimeSeries(output)
