@@ -7,4 +7,5 @@ class StockSymbolAnalyzer():
         self.database = Database()
 
     def get_stock_symbol_list(self):
-        return self.database.get_stock_symbol_list()
+        records = self.database.get('StockSymbolList', None)
+        return [{ 'stock_symbol' : record[0], 'listing_date' : record[1] } for record in records]

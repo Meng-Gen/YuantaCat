@@ -5,41 +5,19 @@ import psycopg2
 class PostgresGetCommnad():
     def __init__(self, connection_string):
         self.connection_string = connection_string
+        self.operation_map = {
+            'StockSymbolList' : "select stock_symbol, listing_date from stock_symbol where release_date in (select max(release_date) from stock_symbol) and cfi_code = 'ESVUFR'",
+            'CapitalIncreaseByCash' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '現金增資'",
+            'CapitalIncreaseByEarnings' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '盈餘轉增資'",
+            'CapitalIncreaseBySurplus' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '公積及其他'",
+            'NetIncome' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and account = '本期稅後淨利'",
+            'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and account = '股東權益總額'",
+        }
 
-    def get_stock_symbol_list(self):
+    def get(self, operation, param):
         connection = psycopg2.connect(self.connection_string)
         cursor = connection.cursor()
-        cursor.execute("select stock_symbol, listing_date from stock_symbol where release_date in (select max(release_date) from stock_symbol) and cfi_code = 'ESVUFR'")
-        records = cursor.fetchall()
-        connection.commit()
-        connection.close()
-        return [{ 'stock_symbol' : record[0], 'listing_date' : record[1] } for record in records]
-
-    def get_capital_increase_by_cash(self, stock_symbol):
-        connection = psycopg2.connect(self.connection_string)
-        cursor = connection.cursor()
-        entry = { 'stock_symbol' : stock_symbol }
-        cursor.execute(u"select stock_symbol, stmt_date, value from capital_increase_history where release_date in (select max(release_date) from stock_symbol) and stock_symbol = %(stock_symbol)s and account = '現金增資' order by stmt_date", entry)
-        records = cursor.fetchall()
-        connection.commit()
-        connection.close()
-        return records
-
-    def get_capital_increase_by_earnings(self, stock_symbol):
-        connection = psycopg2.connect(self.connection_string)
-        cursor = connection.cursor()
-        entry = { 'stock_symbol' : stock_symbol }
-        cursor.execute(u"select stock_symbol, stmt_date, value from capital_increase_history where release_date in (select max(release_date) from stock_symbol) and stock_symbol = %(stock_symbol)s and account = '盈餘轉增資' order by stmt_date", entry)
-        records = cursor.fetchall()
-        connection.commit()
-        connection.close()
-        return records
-
-    def get_capital_increase_by_surplus(self, stock_symbol):
-        connection = psycopg2.connect(self.connection_string)
-        cursor = connection.cursor()
-        entry = { 'stock_symbol' : stock_symbol }
-        cursor.execute(u"select stock_symbol, stmt_date, value from capital_increase_history where release_date in (select max(release_date) from stock_symbol) and stock_symbol = %(stock_symbol)s and account = '公積及其他' order by stmt_date", entry)
+        cursor.execute(self.operation_map[operation], param)
         records = cursor.fetchall()
         connection.commit()
         connection.close()

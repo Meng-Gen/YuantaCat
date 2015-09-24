@@ -6,25 +6,19 @@ import datetime
 import unittest
 
 class CapitalIncreaseHistoryAnalyzerTest(unittest.TestCase):
-    def setUp(self):
-        self.analyzer = CapitalIncreaseHistoryAnalyzer()
+    def test_get_capital_increase_1101(self):
+        analyzer = CapitalIncreaseHistoryAnalyzer('1101')
+        capital_increase = analyzer.get_capital_increase_by_cash().get()
+        self.assertEqual(capital_increase[0], (datetime.date(1993, 12, 31), 53.00075))
+        self.assertEqual(capital_increase[1], (datetime.date(1994, 12, 31), 53.00075))
+        self.assertEqual(capital_increase[4], (datetime.date(1997, 12, 31), 63.0255))
 
-    def tearDown(self):
-        self.analyzer = None
-    
-    def test_get_capital_increase_by_cash_of_2498(self):
-        capital_increase = self.analyzer.get_capital_increase_by_cash('2498')
-        self.assertEqual(capital_increase[0], ('2498', datetime.date(1997, 12, 31), 0.05))
-        self.assertEqual(capital_increase[1], ('2498', datetime.date(1998, 12, 31), 10.0))
+        capital_increase = analyzer.get_capital_increase_by_earnings().get()
+        self.assertEqual(capital_increase[0], (datetime.date(1993, 12, 31), 27.26106))
+        self.assertEqual(capital_increase[1], (datetime.date(1994, 12, 31), 30.29706))
+        self.assertEqual(capital_increase[4], (datetime.date(1997, 12, 31), 58.62075))
 
-    def test_get_capital_increase_by_earnings_of_2498(self):
-        capital_increase = self.analyzer.get_capital_increase_by_earnings('2498')
-        self.assertEqual(capital_increase[0], ('2498', datetime.date(1997, 12, 31), 0))
-        self.assertEqual(capital_increase[1], ('2498', datetime.date(1998, 12, 31), 0))
-        self.assertEqual(capital_increase[4], ('2498', datetime.date(2002, 12, 31), 3.512))
-
-    def test_get_capital_increase_by_surplus_of_2498(self):
-        capital_increase = self.analyzer.get_capital_increase_by_surplus('2498')
-        self.assertEqual(capital_increase[0], ('2498', datetime.date(1997, 12, 31), 0))
-        self.assertEqual(capital_increase[1], ('2498', datetime.date(1998, 12, 31), 0))
-        self.assertEqual(capital_increase[4], ('2498', datetime.date(2002, 12, 31), 0))
+        capital_increase = analyzer.get_capital_increase_by_surplus().get()
+        self.assertEqual(capital_increase[0], (datetime.date(1993, 12, 31), 20.93819))
+        self.assertEqual(capital_increase[1], (datetime.date(1994, 12, 31), 31.05819))
+        self.assertEqual(capital_increase[4], (datetime.date(1997, 12, 31), 43.35375))

@@ -11,14 +11,5 @@ class PostgresDatabase():
     def store(self, feed):
         return self.store_command.store(feed)
 
-    def get_stock_symbol_list(self):
-        return self.get_command.get_stock_symbol_list()
-
-    def get_capital_increase_by_cash(self, stock_symbol):
-        return self.get_command.get_capital_increase_by_cash(stock_symbol)
-
-    def get_capital_increase_by_earnings(self, stock_symbol):
-        return self.get_command.get_capital_increase_by_earnings(stock_symbol)
-
-    def get_capital_increase_by_surplus(self, stock_symbol):
-        return self.get_command.get_capital_increase_by_surplus(stock_symbol)
+    def get(self, operation, param):
+        return self.get_command.get(operation, param)
