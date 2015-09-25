@@ -39,7 +39,7 @@ class AssemblerState(State):
             self.todo_entry_list.remove(entry)
 
             # avoid exceptional shutdown
-            if curr_count % 10 == 0:
+            if curr_count % 100 == 0:
                 self.tear_down()
         
         self.tear_down()

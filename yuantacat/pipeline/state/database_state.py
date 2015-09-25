@@ -38,8 +38,8 @@ class DatabaseState(State):
             self.todo_entry_list.remove(entry)
 
             # avoid exceptional shutdown
-            if curr_count % 10 == 0:
-                self.tear_down()
+            if curr_count % 100 == 0:
+                self.avoid_exceptional_shutdown()
 
         self.tear_down()
 
@@ -58,6 +58,10 @@ class DatabaseState(State):
             self.todo_entry_list = list(todo_entry_list)
         else:
             self.todo_entry_list = list(all_entry_list)
+        self.state_machine.save_memento()
+
+    def avoid_exceptional_shutdown(self):
+        self.state_machine.set_value('todo_entry_list', list(self.todo_entry_list))
         self.state_machine.save_memento()
 
     def tear_down(self):

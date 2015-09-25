@@ -1,14 +1,20 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.analyzer.analyzer_time_series import AnalyzerTimeSeries
+from yuantacat.analyzer.account_time_series import AccountTimeSeries
 from yuantacat.common.time_series import TimeSeries
 
 class DupontAnalyzer():
-    def __init__(self, stock_symbol):
-        self.time_series = AnalyzerTimeSeries(stock_symbol, [
-            'NetIncome',
-            'Equity',
-        ])
+    def __init__(self, stock_symbol, period):
+        param = {
+            'stock_symbol' : stock_symbol,
+            'period' : period, 
+            'account_list' : [
+                'NetIncome',
+                'Equity',
+            ]
+        }
+        self.time_series = AccountTimeSeries(param)
+        self.period = period
 
     def get_roe(self):
         net_income = self.time_series.get('NetIncome')

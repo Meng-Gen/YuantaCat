@@ -10,8 +10,10 @@ class PostgresGetCommnad():
             'CapitalIncreaseByCash' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '現金增資'",
             'CapitalIncreaseByEarnings' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '盈餘轉增資'",
             'CapitalIncreaseBySurplus' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '公積及其他'",
-            'NetIncome' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and account = '本期稅後淨利'",
-            'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and account = '股東權益總額'",
+            'NetIncome' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '本期稅後淨利'",
+            'Assets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '資產總額'",
+            'Liabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '負債總額'",
+            'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '股東權益總額'",
         }
 
     def get(self, operation, param):
