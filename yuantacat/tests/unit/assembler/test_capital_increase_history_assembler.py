@@ -19,6 +19,8 @@ class CapitalIncreaseHistoryAssemblerTest(unittest.TestCase):
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
+        self.assertEqual(dao.get_period(), 'Y')
+
         actual = dao.get_column_name_list()
         expected = [u'年度', u'現金增資', u'比重', u'盈餘轉增資', u'比重', u'公積及其他', u'比重']
         self.assertEqual(actual, expected)

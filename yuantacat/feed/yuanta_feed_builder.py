@@ -11,6 +11,7 @@ class YuantaFeedBuilder():
         feed = []
         stock_symbol = dao.get_stock_symbol()
         release_date = DateUtils().now_date()
+        period = dao.get_period()
         entry_count = len(self.column_name_list)
         for row in dao.get_row_list():
             stmt_date = row[0]
@@ -23,6 +24,7 @@ class YuantaFeedBuilder():
                     'account' : self.column_name_list[i],
                     'account_order' : i + 1,
                     'value' : value_list[i],
+                    'period' : period,
                 }
                 feed.append(entry)
         return tuple(feed)

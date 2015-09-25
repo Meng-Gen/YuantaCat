@@ -7,10 +7,10 @@ class CashFlowQuarterlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('basic')
         dao = assembler.assemble(param)
-        return CashFlowDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return CashFlowDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'], 'Q')
 
 class CashFlowYearlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('basic')
         dao = assembler.assemble(param)
-        return CashFlowDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return CashFlowDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'], 'Y')

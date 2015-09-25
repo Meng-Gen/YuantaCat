@@ -7,10 +7,10 @@ class BalanceSheetQuarterlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('basic')
         dao = assembler.assemble(param)
-        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'], 'Q')
 
 class BalanceSheetYearlyAssembler():
     def assemble(self, param):
         assembler = FinancialStatementAssembler('form')
         dao = assembler.assemble(param)
-        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'])
+        return BalanceSheetDao(dao['column_name_list'], dao['row_list'], dao['stock_symbol'], 'Y')

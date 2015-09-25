@@ -8,6 +8,7 @@ class FinancialFeedBuilder():
         stock_symbol = dao.get_stock_symbol()
         release_date = DateUtils().now_date()
         stmt_date_list = dao.get_column_name_list()
+        period = dao.get_period()
         row_list = dao.get_row_list()
         for i in range(len(row_list)):
             if not row_list[i]:
@@ -21,6 +22,7 @@ class FinancialFeedBuilder():
                     'account' : account,
                     'account_order' : i + 1,
                     'value' : row_list[i][j],
+                    'period' : period,
                 }
                 feed.append(entry)
         return tuple(feed)

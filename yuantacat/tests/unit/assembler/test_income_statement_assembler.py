@@ -20,6 +20,8 @@ class IncomeStatementAssemblerTest(unittest.TestCase):
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
 
+        self.assertEqual(dao.get_period(), 'Q')
+
         actual = dao.get_column_name_list()
         expected = [
             u'期別', 
@@ -49,6 +51,8 @@ class IncomeStatementAssemblerTest(unittest.TestCase):
         dao = IncomeStatementYearlyAssembler().assemble(param)
 
         self.assertEqual(dao.get_stock_symbol(), param['stock_symbol'])
+
+        self.assertEqual(dao.get_period(), 'Y')
 
         actual = dao.get_column_name_list()
         expected = [
