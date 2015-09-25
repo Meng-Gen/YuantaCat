@@ -14,6 +14,11 @@ class PostgresGetCommnad():
             'Assets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '資產總額'",
             'Liabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '負債總額'",
             'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '股東權益總額'",
+            'CurrentAssets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '流動資產'",
+            'CurrentLiabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '流動負債'",
+            'CashAndEquivalents' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '現金及約當現金'",
+            'MarketableSecurities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '短期投資'",
+            'AccountsReceivable' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '應收帳款及票據'",
         }
 
     def get(self, operation, param):

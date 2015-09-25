@@ -3,7 +3,7 @@
 from yuantacat.analyzer.account_time_series import AccountTimeSeries
 from yuantacat.common.time_series import TimeSeries
 
-class FinancialStructureAnalyzer():
+class CapitalStructureAnalyzer():
     def __init__(self, stock_symbol, period):
         param = {
             'stock_symbol' : stock_symbol,

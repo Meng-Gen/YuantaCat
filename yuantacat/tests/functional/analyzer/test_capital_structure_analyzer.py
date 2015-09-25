@@ -1,12 +1,12 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.analyzer.financial_structure_analyzer import FinancialStructureAnalyzer
+from yuantacat.analyzer.capital_structure_analyzer import CapitalStructureAnalyzer
 
 import unittest
 
-class FinancialStructureAnalyzerTest(unittest.TestCase):
+class CapitalStructureAnalyzerTest(unittest.TestCase):
     def test_get_analysis_quarterly_1101(self):
-        analyzer = FinancialStructureAnalyzer(stock_symbol='1101', period='Q')
+        analyzer = CapitalStructureAnalyzer(stock_symbol='1101', period='Q')
         liabilities_ratio = analyzer.get_liabilities_ratio()
         equity_ratio = analyzer.get_equity_ratio()
         equity_multiplier = analyzer.get_equity_multiplier()
@@ -22,7 +22,7 @@ class FinancialStructureAnalyzerTest(unittest.TestCase):
             self.assertAlmostEqual(value, 1, places=2)
 
     def test_get_analysis_yearly_1101(self):
-        analyzer = FinancialStructureAnalyzer(stock_symbol='1101', period='Y')
+        analyzer = CapitalStructureAnalyzer(stock_symbol='1101', period='Y')
         liabilities_ratio = analyzer.get_liabilities_ratio()
         equity_ratio = analyzer.get_equity_ratio()
         equity_multiplier = analyzer.get_equity_multiplier()
