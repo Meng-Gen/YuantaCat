@@ -19,4 +19,4 @@ class DupontAnalyzer():
     def get_roe(self):
         net_income = self.time_series.get('NetIncome')
         equity = self.time_series.get('Equity').get_average()
-        return net_income.divide(equity)
+        return net_income / equity

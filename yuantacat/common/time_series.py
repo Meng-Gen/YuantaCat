@@ -90,16 +90,16 @@ class TimeSeries(object):
                 output.append((stmt_date, z))
         return TimeSeries(output)
 
-    def add(self, other_time_series):
+    def __add__(self, other_time_series):
         return self.execute_binary_operation(operator.add, other_time_series)
 
-    def minus(self, other_time_series):
+    def __sub__(self, other_time_series):
         return self.execute_binary_operation(operator.sub, other_time_series)
 
-    def divide(self, other_time_series):
+    def __div__(self, other_time_series):
         return self.execute_binary_operation(operator.truediv, other_time_series)
 
-    def multiply(self, other_time_series):
+    def __mul__(self, other_time_series):
         return self.execute_binary_operation(operator.mul, other_time_series)
 
     def annualize(self):

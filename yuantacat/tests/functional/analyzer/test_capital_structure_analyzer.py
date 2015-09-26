@@ -12,13 +12,13 @@ class CapitalStructureAnalyzerTest(unittest.TestCase):
         equity_multiplier = analyzer.get_equity_multiplier()
         
         # Assets = Liabilities + Equity
-        accounting_equation = liabilities_ratio.add(equity_ratio).get()
-        for stmt_date, value in accounting_equation:
+        accounting_equation = liabilities_ratio + equity_ratio
+        for stmt_date, value in accounting_equation.get():
             self.assertAlmostEqual(value, 1, places=2)
 
         # EquityMultiplier = 1 / EquityRatio
-        inverse_equation = equity_ratio.multiply(equity_multiplier).get()
-        for stmt_date, value in inverse_equation:
+        inverse_equation = equity_ratio * equity_multiplier
+        for stmt_date, value in inverse_equation.get():
             self.assertAlmostEqual(value, 1, places=2)
 
     def test_get_analysis_yearly_1101(self):
@@ -28,11 +28,11 @@ class CapitalStructureAnalyzerTest(unittest.TestCase):
         equity_multiplier = analyzer.get_equity_multiplier()
         
         # Assets = Liabilities + Equity
-        accounting_equation = liabilities_ratio.add(equity_ratio).get()
-        for stmt_date, value in accounting_equation:
+        accounting_equation = liabilities_ratio + equity_ratio
+        for stmt_date, value in accounting_equation.get():
             self.assertAlmostEqual(value, 1, places=2)
 
         # EquityMultiplier = 1 / EquityRatio
-        inverse_equation = equity_ratio.multiply(equity_multiplier).get()
-        for stmt_date, value in inverse_equation:
+        inverse_equation = equity_ratio * equity_multiplier
+        for stmt_date, value in inverse_equation.get():
             self.assertAlmostEqual(value, 1, places=2)

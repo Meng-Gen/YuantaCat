@@ -16,9 +16,12 @@ class PostgresGetCommnad():
             'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '股東權益總額'",
             'CurrentAssets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '流動資產'",
             'CurrentLiabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '流動負債'",
-            'CashAndEquivalents' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '現金及約當現金'",
-            'MarketableSecurities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '短期投資'",
+            'Inventories' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '存貨'",
+            'PrepaidAccounts' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '預付費用及預付款'",
+            'CostOfGoodsSold' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業成本'",
+            'Sales' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業收入淨額'",
             'AccountsReceivable' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '應收帳款及票據'",
+            'AccountsPayable' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '應付帳款及票據'",
         }
 
     def get(self, operation, param):

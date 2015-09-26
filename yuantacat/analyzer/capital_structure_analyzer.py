@@ -21,16 +21,16 @@ class CapitalStructureAnalyzer():
         # LiabilitiesRatio = Liabilities / Assets
         liabilities = self.time_series.get('Liabilities')
         assets = self.time_series.get('Assets')
-        return liabilities.divide(assets)
+        return liabilities / assets
 
     def get_equity_ratio(self):
         # EquityRatio = Equity / Assets
         equity = self.time_series.get('Equity')
         assets = self.time_series.get('Assets')
-        return equity.divide(assets)
+        return equity / assets
 
     def get_equity_multiplier(self):
         # EquityMultiplier = Assets / Equity
         assets = self.time_series.get('Assets')
         equity = self.time_series.get('Equity')
-        return assets.divide(equity)
+        return assets / equity

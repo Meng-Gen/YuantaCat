@@ -37,8 +37,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 5),
         ])
-        y = x.scalar(2).get()
-        self.assertEqual(y, [
+        y = x.scalar(2)
+        self.assertEqual(y.get(), [
             (datetime.date(2001, 12, 31), 2.0), 
             (datetime.date(2002, 12, 31), 4.0),
             (datetime.date(2003, 12, 31), 10.0),
@@ -50,8 +50,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 5),
         ])
-        y = x.get_inverse().get()
-        self.assertEqual(y, [
+        y = x.get_inverse()
+        self.assertEqual(y.get(), [
             (datetime.date(2001, 12, 31), 1.0), 
             (datetime.date(2002, 12, 31), 0.5),
             (datetime.date(2003, 12, 31), 0.2),
@@ -65,8 +65,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2004, 12, 31), 4),
             (datetime.date(2005, 12, 31), 6),
         ])
-        averaged = time_series.get_average().get()
-        self.assertEqual(averaged, [
+        averaged = time_series.get_average()
+        self.assertEqual(averaged.get(), [
             (datetime.date(2001, 12, 31), 1),
             (datetime.date(2002, 12, 31), 1.5),
             (datetime.date(2003, 12, 31), 2.5),
@@ -85,8 +85,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 1),
         ])
-        z = x.add(y).get()
-        self.assertEqual(z, [
+        z = x + y
+        self.assertEqual(z.get(), [
             (datetime.date(2001, 12, 31), 6.0), 
             (datetime.date(2002, 12, 31), 4.0),
             (datetime.date(2003, 12, 31), 4.0),
@@ -103,8 +103,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 1),
         ])
-        z = x.minus(y).get()
-        self.assertEqual(z, [
+        z = x - y
+        self.assertEqual(z.get(), [
             (datetime.date(2001, 12, 31), -4.0), 
             (datetime.date(2002, 12, 31), 0.0),
             (datetime.date(2003, 12, 31), 2.0),
@@ -121,8 +121,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 1),
         ])
-        z = x.divide(y).get()
-        self.assertEqual(z, [
+        z = x / y
+        self.assertEqual(z.get(), [
             (datetime.date(2001, 12, 31), 0.2), 
             (datetime.date(2002, 12, 31), 1.0),
             (datetime.date(2003, 12, 31), 3.0),
@@ -139,8 +139,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2002, 12, 31), 2),
             (datetime.date(2003, 12, 31), 1),
         ])
-        z = x.multiply(y).get()
-        self.assertEqual(z, [
+        z = x * y
+        self.assertEqual(z.get(), [
             (datetime.date(2001, 12, 31), 5.0), 
             (datetime.date(2002, 12, 31), 4.0),
             (datetime.date(2003, 12, 31), 3.0),
@@ -153,8 +153,8 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2003, 9, 30), 3),
             (datetime.date(2004, 12, 31), 4),
         ])
-        z = x.annualize().get()
-        self.assertEqual(z, [
+        z = x.annualize()
+        self.assertEqual(z.get(), [
             (datetime.date(2001, 3, 31), 4.055555555555555),
             (datetime.date(2002, 6, 30), 4.033149171270718),
             (datetime.date(2003, 9, 30), 4.010989010989011),
