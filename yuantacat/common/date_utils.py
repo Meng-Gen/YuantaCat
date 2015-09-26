@@ -77,3 +77,10 @@ class DateUtils():
         last = self.get_last_date_of_year(date)
         date_diff = last - first
         return date_diff.days + 1
+
+    def get_last_date_of_month_in_prev_year(self, date):
+        year = date.year - 1
+        month = date.month
+        day = self.get_last_day_of_month(year, month)
+        return datetime.date(year, month, day)
+

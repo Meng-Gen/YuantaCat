@@ -144,19 +144,19 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2001, 12, 31), 5.0), 
             (datetime.date(2002, 12, 31), 4.0),
             (datetime.date(2003, 12, 31), 3.0),
-        ])        
+        ]) 
 
-    def test_annualize(self):
+    def test_accumulate(self):
         x = TimeSeries([
             (datetime.date(2001, 3, 31), 1),
-            (datetime.date(2002, 6, 30), 2),
-            (datetime.date(2003, 9, 30), 3),
-            (datetime.date(2004, 12, 31), 4),
+            (datetime.date(2001, 6, 30), 2),
+            (datetime.date(2001, 9, 30), 3),
+            (datetime.date(2001, 12, 31), 4),
         ])
-        z = x.annualize()
+        z = x.accumulate()
         self.assertEqual(z.get(), [
-            (datetime.date(2001, 3, 31), 4.055555555555555),
-            (datetime.date(2002, 6, 30), 4.033149171270718),
-            (datetime.date(2003, 9, 30), 4.010989010989011),
-            (datetime.date(2004, 12, 31), 4.0),
-        ])
+            (datetime.date(2001, 3, 31), 1), 
+            (datetime.date(2001, 6, 30), 3),
+            (datetime.date(2001, 9, 30), 6),
+            (datetime.date(2001, 12, 31), 10),
+        ])        

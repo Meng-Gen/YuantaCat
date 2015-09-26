@@ -109,3 +109,12 @@ class DateUtilsTest(unittest.TestCase):
                 datetime.date(2011, 3, 31), 
         ]
         self.assertEqual(actual, expected)
+
+    def test_get_last_date_of_month_in_prev_year(self):
+        actual = self.date_utils.get_last_date_of_month_in_prev_year(datetime.date(2010, 10, 31))
+        expected = datetime.date(2009, 10, 31)
+        self.assertEqual(actual, expected)
+
+        actual = self.date_utils.get_last_date_of_month_in_prev_year(datetime.date(2013, 2, 28))
+        expected = datetime.date(2012, 2, 29)
+        self.assertEqual(actual, expected)

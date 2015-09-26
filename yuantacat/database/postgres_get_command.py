@@ -25,6 +25,7 @@ class PostgresGetCommnad():
             'CashFlowFromOperatingActivities' : u"select release_date, stmt_date, value from cash_flow where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '來自營運之現金流量'",
             'CashFlowFromInvestingActivities' : u"select release_date, stmt_date, value from cash_flow where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '投資活動之現金流量'",
             'CashFlowFromFinancingActivities' : u"select release_date, stmt_date, value from cash_flow where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '理財活動之現金流量'",
+            'OperatingRevenue' : u"select release_date, stmt_date, value from operating_revenue where stock_symbol = %(stock_symbol)s and account = '合併營收'",
         }
 
     def get(self, operation, param):

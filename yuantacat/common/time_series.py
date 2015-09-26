@@ -2,6 +2,7 @@
 
 from yuantacat.common.date_utils import DateUtils
 
+import datetime
 import operator
 
 class TimeSeries(object):
@@ -102,11 +103,28 @@ class TimeSeries(object):
     def __mul__(self, other_time_series):
         return self.execute_binary_operation(operator.mul, other_time_series)
 
-    def annualize(self):
+    def accumulate(self):
+        if not self.time_series:
+            return []
         output = []
+        first_stmt_date, first_value = self.time_series[0]
+        current_year = first_stmt_date.year
+        accumulated_value = 0.0
         for stmt_date, value in self.time_series:
-            total_day_number = self.date_utils.get_total_day_number(stmt_date)
-            day_number = self.date_utils.get_day_number(stmt_date)
-            z = float(total_day_number) / float(day_number) * value
-            output.append((stmt_date, z))
+            if stmt_date.year != current_year:
+                current_year = stmt_date.year
+                accumulated_value = 0.0
+            accumulated_value += value
+            output.append((stmt_date, accumulated_value))
+        return TimeSeries(output)
+
+    def get_yoy(self):
+        output = []
+        time_series_map = self.get_map()
+        for stmt_date, value in self.time_series:
+            prev_stmt_date = self.date_utils.get_last_date_of_month_in_prev_year(stmt_date)
+            if prev_stmt_date in time_series_map:
+                prev_value = time_series_map[prev_stmt_date]
+                yoy = (float(value) - float(prev_value)) / float(prev_value)
+                output.append((stmt_date, yoy))
         return TimeSeries(output)
