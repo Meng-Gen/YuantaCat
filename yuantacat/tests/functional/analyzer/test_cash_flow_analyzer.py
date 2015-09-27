@@ -8,9 +8,9 @@ import unittest
 class CashFlowAnalyzerTest(unittest.TestCase):
     def test_get_analysis_quarterly_1101(self):
         analyzer = CashFlowAnalyzer(stock_symbol='1101', period='Q')
-        net_income = analyzer.get_net_income().get_map()
-        self.assertEqual(net_income[datetime.date(2015, 6, 30)], 2728)
-        self.assertEqual(net_income[datetime.date(2015, 3, 31)], 975)
+        net_profit = analyzer.get_net_profit().get_map()
+        self.assertEqual(net_profit[datetime.date(2015, 6, 30)], 2728)
+        self.assertEqual(net_profit[datetime.date(2015, 3, 31)], 975)
 
         cash_flow = analyzer.get_cash_flow_from_operating_activities().get_map()
         self.assertEqual(cash_flow[datetime.date(2015, 6, 30)], 5575)
@@ -30,9 +30,9 @@ class CashFlowAnalyzerTest(unittest.TestCase):
 
     def test_get_analysis_yearly_1101(self):
         analyzer = CashFlowAnalyzer(stock_symbol='1101', period='Y')
-        net_income = analyzer.get_net_income().get_map()
-        self.assertEqual(net_income[datetime.date(2014, 12, 31)], 16584)
-        self.assertEqual(net_income[datetime.date(2013, 12, 31)], 15119)
+        net_profit = analyzer.get_net_profit().get_map()
+        self.assertEqual(net_profit[datetime.date(2014, 12, 31)], 16584)
+        self.assertEqual(net_profit[datetime.date(2013, 12, 31)], 15119)
 
         cash_flow = analyzer.get_cash_flow_from_operating_activities().get_map()
         self.assertEqual(cash_flow[datetime.date(2014, 12, 31)], 19987)

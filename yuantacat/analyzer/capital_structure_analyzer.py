@@ -12,6 +12,9 @@ class CapitalStructureAnalyzer():
                 'Assets',
                 'Liabilities',  
                 'Equity',
+                'LongTermLiabilities',
+                'CurrentLiabilities',
+                'FixedAssets',
             ]
         }
         self.time_series = AccountTimeSeries(param)
@@ -34,3 +37,17 @@ class CapitalStructureAnalyzer():
         assets = self.time_series.get('Assets')
         equity = self.time_series.get('Equity')
         return assets / equity
+
+    def get_true_liabilities_ratio(self):
+        # TrueLiabilitiesRatio = LongTermLiabilities / (Assets - CurrentLiabilities)
+        long_term_liabilities = self.time_series.get('LongTermLiabilities')
+        assets = self.time_series.get('Assets')
+        current_liabilities = self.time_series.get('CurrentLiabilities')
+        return long_term_liabilities / (assets - current_liabilities)
+
+    def get_long_term_capital_to_fixed_assets_ratio(self):
+        # LongTermCapitalToFixedAssetsRatio = (LongTermLiabilities + Equity) / FixedAssets
+        long_term_liabilities = self.time_series.get('LongTermLiabilities')
+        equity = self.time_series.get('Equity')
+        fixed_assets = self.time_series.get('FixedAssets')
+        return (long_term_liabilities + equity) / fixed_assets

@@ -128,3 +128,12 @@ class TimeSeries(object):
                 yoy = (float(value) - float(prev_value)) / float(prev_value)
                 output.append((stmt_date, yoy))
         return TimeSeries(output)
+
+    def shift(self):
+        output = []
+        count = len(self.time_series)
+        for i in range(1, count):
+            stmt_date, value = self.time_series[i]
+            prev_stmt_date, prev_value = self.time_series[i - 1]
+            output.append((stmt_date, prev_value))
+        return TimeSeries(output)

@@ -9,7 +9,7 @@ class DupontAnalyzer():
             'stock_symbol' : stock_symbol,
             'period' : period, 
             'account_list' : [
-                'NetIncome',
+                'NetProfit',
                 'Equity',
                 'Assets',
                 'Sales', 
@@ -19,22 +19,22 @@ class DupontAnalyzer():
         self.period = period
 
     def get_roe(self):
-        # ROE = NetIncome / Equity
-        net_income = self.time_series.get('NetIncome')
+        # ROE = NetProfit / Equity
+        net_profit = self.time_series.get('NetProfit')
         equity = self.time_series.get('Equity').get_average()
-        return net_income / equity
+        return net_profit / equity
 
     def get_roa(self):
-        # ROE = NetIncome / Assets
-        net_income = self.time_series.get('NetIncome')
+        # ROE = NetProfit / Assets
+        net_profit = self.time_series.get('NetProfit')
         assets = self.time_series.get('Assets').get_average()
-        return net_income / assets
+        return net_profit / assets
 
     def get_ros(self):
-        # ROS (returns on sales) = NetIncome / Sales
-        net_income = self.time_series.get('NetIncome')
+        # ROS (returns on sales) = NetProfit / Sales
+        net_profit = self.time_series.get('NetProfit')
         sales = self.time_series.get('Sales') 
-        return net_income / sales
+        return net_profit / sales
 
     def get_ato(self):
         # ATO (asset turnover) = Sales / Assets

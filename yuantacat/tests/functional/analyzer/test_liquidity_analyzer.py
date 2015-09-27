@@ -1,13 +1,13 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.analyzer.liquidity_measurement_analyzer import LiquidityMeasurementAnalyzer
+from yuantacat.analyzer.liquidity_analyzer import LiquidityAnalyzer
 
 import datetime
 import unittest
 
-class LiquidityMeasurementAnalyzerTest(unittest.TestCase):
+class LiquidityAnalyzerTest(unittest.TestCase):
     def test_get_analysis_quarterly_1101(self):
-        analyzer = LiquidityMeasurementAnalyzer(stock_symbol='1101', period='Q')
+        analyzer = LiquidityAnalyzer(stock_symbol='1101', period='Q')
 
         current_ratio = analyzer.get_current_ratio().get_map()
         self.assertAlmostEqual(current_ratio[datetime.date(2015, 6, 30)], 1.2114, places=4)
@@ -33,8 +33,16 @@ class LiquidityMeasurementAnalyzerTest(unittest.TestCase):
         self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2015, 6, 30)], 87.4339, places=4)
         self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2015, 3, 31)], 118.1390, places=4)
 
+        interest_protection_multiples = analyzer.get_interest_protection_multiples().get_map()
+        self.assertAlmostEqual(interest_protection_multiples[datetime.date(2015, 6, 30)], 8.76, places=2)
+        self.assertAlmostEqual(interest_protection_multiples[datetime.date(2015, 3, 31)], 4.05, places=2)
+
+        roc = analyzer.get_roc().get_map()
+        self.assertAlmostEqual(roc[datetime.date(2015, 6, 30)], 0.0150, places=4)
+        self.assertAlmostEqual(roc[datetime.date(2015, 3, 31)], 0.0079, places=4)
+
     def test_get_analysis_yearly_1101(self):
-        analyzer = LiquidityMeasurementAnalyzer(stock_symbol='1101', period='Y')
+        analyzer = LiquidityAnalyzer(stock_symbol='1101', period='Y')
 
         current_ratio = analyzer.get_current_ratio().get_map()
         self.assertAlmostEqual(current_ratio[datetime.date(2014, 12, 31)], 1.4076, places=4)
@@ -59,3 +67,11 @@ class LiquidityMeasurementAnalyzerTest(unittest.TestCase):
         cash_conversion_cycle = analyzer.get_cash_conversion_cycle().get_map()
         self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2014, 12, 31)], 88.3502, places=4)
         self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2013, 12, 31)], 74.5314, places=4)
+
+        interest_protection_multiples = analyzer.get_interest_protection_multiples().get_map()
+        self.assertAlmostEqual(interest_protection_multiples[datetime.date(2014, 12, 31)], 12.12, places=2)
+        self.assertAlmostEqual(interest_protection_multiples[datetime.date(2013, 12, 31)], 10.74, places=2)
+
+        roc = analyzer.get_roc().get_map()
+        self.assertAlmostEqual(roc[datetime.date(2014, 12, 31)], 0.0935, places=4)
+        self.assertAlmostEqual(roc[datetime.date(2013, 12, 31)], 0.0889, places=4)

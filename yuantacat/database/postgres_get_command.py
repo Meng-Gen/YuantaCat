@@ -10,7 +10,7 @@ class PostgresGetCommnad():
             'CapitalIncreaseByCash' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '現金增資'",
             'CapitalIncreaseByEarnings' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '盈餘轉增資'",
             'CapitalIncreaseBySurplus' : u"select release_date, stmt_date, value from capital_increase_history where stock_symbol = %(stock_symbol)s and account = '公積及其他'",
-            'NetIncome' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '經常利益'",
+            'NetProfit' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '經常利益'",
             'Assets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '資產總額'",
             'Liabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '負債總額'",
             'Equity' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '股東權益總額'",
@@ -26,6 +26,15 @@ class PostgresGetCommnad():
             'CashFlowFromInvestingActivities' : u"select release_date, stmt_date, value from cash_flow where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '投資活動之現金流量'",
             'CashFlowFromFinancingActivities' : u"select release_date, stmt_date, value from cash_flow where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '理財活動之現金流量'",
             'OperatingRevenue' : u"select release_date, stmt_date, value from operating_revenue where stock_symbol = %(stock_symbol)s and account = '合併營收'",
+            'LongTermLiabilities' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '長期負債'",
+            'FixedAssets' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '固定資產'",
+            'IncomeBeforeTax' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '稅前淨利'",
+            'InterestExpense' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '利息支出'",
+            'SellingExpenses' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業費用─推銷費用'",
+            'AdministrativeExpenses' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業費用─管理費用'",
+            'GrossProfit' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業毛利'",
+            'OperatingProfit' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業利益'",
+            'ShortTermDebt' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '短期借款'",
         }
 
     def get(self, operation, param):

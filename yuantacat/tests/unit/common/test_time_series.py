@@ -160,3 +160,17 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2001, 9, 30), 6),
             (datetime.date(2001, 12, 31), 10),
         ])        
+
+    def test_shift(self):
+        x = TimeSeries([
+            (datetime.date(2001, 3, 31), 1),
+            (datetime.date(2001, 6, 30), 2),
+            (datetime.date(2001, 9, 30), 3),
+            (datetime.date(2001, 12, 31), 4),
+        ])
+        z = x.shift()
+        self.assertEqual(z.get(), [
+            (datetime.date(2001, 6, 30), 1),
+            (datetime.date(2001, 9, 30), 2),
+            (datetime.date(2001, 12, 31), 3),
+        ])

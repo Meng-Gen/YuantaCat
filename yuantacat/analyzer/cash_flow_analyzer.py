@@ -9,7 +9,7 @@ class CashFlowAnalyzer():
             'stock_symbol' : stock_symbol,
             'period' : period, 
             'account_list' : [
-                'NetIncome',
+                'NetProfit',
                 'CashFlowFromOperatingActivities',
                 'CashFlowFromInvestingActivities',
                 'CashFlowFromFinancingActivities',
@@ -18,9 +18,9 @@ class CashFlowAnalyzer():
         self.time_series = AccountTimeSeries(param)
         self.period = period
 
-    def get_net_income(self):
-        net_income = self.time_series.get('NetIncome')
-        return net_income
+    def get_net_profit(self):
+        net_profit = self.time_series.get('NetProfit')
+        return net_profit
 
     def get_cash_flow_from_operating_activities(self):
         cash_flow = self.time_series.get('CashFlowFromOperatingActivities')

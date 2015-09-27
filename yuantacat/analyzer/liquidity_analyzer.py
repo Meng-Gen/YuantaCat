@@ -3,7 +3,7 @@
 from yuantacat.analyzer.account_time_series import AccountTimeSeries
 from yuantacat.common.time_series import TimeSeries
 
-class LiquidityMeasurementAnalyzer():
+class LiquidityAnalyzer():
     def __init__(self, stock_symbol, period):
         param = {
             'stock_symbol' : stock_symbol,
@@ -17,6 +17,10 @@ class LiquidityMeasurementAnalyzer():
                 'Sales',
                 'AccountsReceivable',
                 'AccountsPayable', 
+                'IncomeBeforeTax',
+                'InterestExpense',
+                'Assets',
+                'ShortTermDebt',
             ]
         }
         self.time_series = AccountTimeSeries(param)
@@ -72,6 +76,23 @@ class LiquidityMeasurementAnalyzer():
         dso = self.get_dso()
         dpo = self.get_dpo()
         return dio + dso - dpo
+
+    def get_interest_protection_multiples(self):
+        # InterestProtectionMultiples = EBDIT / InterestExpense
+        # EBDIT = IncomeBeforeTax + InterestExpense
+        income_before_tax = self.time_series.get('IncomeBeforeTax')
+        interest_expense = self.time_series.get('InterestExpense')
+        return (income_before_tax + interest_expense) / interest_expense
+
+    def get_roc(self):
+        # ROC (returns on capital) = EBDIT / (Assets - CurrentLiabilities + ShortTermDebt)
+        # EBDIT = IncomeBeforeTax + InterestExpense
+        income_before_tax = self.time_series.get('IncomeBeforeTax')
+        interest_expense = self.time_series.get('InterestExpense')
+        assets = self.time_series.get('Assets')
+        current_liabilities = self.time_series.get('CurrentLiabilities')
+        short_term_debt = self.time_series.get('ShortTermDebt')
+        return (income_before_tax + interest_expense) / (assets - current_liabilities + short_term_debt)
 
     def __annualize(self, time_series):
         if self.period == 'Y':
