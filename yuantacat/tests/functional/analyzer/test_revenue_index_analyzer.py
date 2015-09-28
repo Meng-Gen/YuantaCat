@@ -1,13 +1,13 @@
 #-*- coding: utf-8 -*-
 
-from yuantacat.analyzer.earning_index_analyzer import EarningIndexAnalyzer
+from yuantacat.analyzer.revenue_index_analyzer import RevenueIndexAnalyzer
 
 import datetime
 import unittest
 
-class EarningIndexAnalyzerTest(unittest.TestCase):
+class RevenueIndexAnalyzerTest(unittest.TestCase):
     def test_get_analysis_1101(self):
-        analyzer = EarningIndexAnalyzer(stock_symbol='1101', period='Q')
+        analyzer = RevenueIndexAnalyzer(stock_symbol='1101', period='Q')
 
         inventory_index = analyzer.get_inventory_index().get_map()
         self.assertTrue(inventory_index[datetime.date(2015, 6, 30)] < 0)

@@ -24,3 +24,19 @@ class ProfitabilityAnalyzerTest(unittest.TestCase):
         net_profit_margin = analyzer.get_net_profit_margin().get_map()
         self.assertAlmostEqual(net_profit_margin[datetime.date(2015, 6, 30)], 0.1091, places=4)
         self.assertAlmostEqual(net_profit_margin[datetime.date(2015, 3, 31)], 0.0455, places=4)
+
+        dio = analyzer.get_dio().get_map()
+        self.assertAlmostEqual(dio[datetime.date(2015, 6, 30)], 42.8001, places=4)
+        self.assertAlmostEqual(dio[datetime.date(2015, 3, 31)], 50.2123, places=4)
+
+        dso = analyzer.get_dso().get_map()
+        self.assertAlmostEqual(dso[datetime.date(2015, 6, 30)], 78.7038, places=4)
+        self.assertAlmostEqual(dso[datetime.date(2015, 3, 31)], 102.7882, places=4)
+
+        dpo = analyzer.get_dpo().get_map()
+        self.assertAlmostEqual(dpo[datetime.date(2015, 6, 30)], 34.0699, places=4)
+        self.assertAlmostEqual(dpo[datetime.date(2015, 3, 31)], 34.8615, places=4)
+
+        cash_conversion_cycle = analyzer.get_cash_conversion_cycle().get_map()
+        self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2015, 6, 30)], 87.4339, places=4)
+        self.assertAlmostEqual(cash_conversion_cycle[datetime.date(2015, 3, 31)], 118.1390, places=4)

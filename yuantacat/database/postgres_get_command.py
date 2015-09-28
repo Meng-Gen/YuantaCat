@@ -35,6 +35,7 @@ class PostgresGetCommnad():
             'GrossProfit' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業毛利'",
             'OperatingProfit' : u"select release_date, stmt_date, value from income_statement where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '營業利益'",
             'ShortTermDebt' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '短期借款'",
+            'LongTermInvestments' : u"select release_date, stmt_date, value from balance_sheet where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '長期投資'",
         }
 
     def get(self, operation, param):
