@@ -1,14 +1,14 @@
-var chart = AmCharts.makeChart("capital_structure_chart_div", {
+var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
     "type" : "serial",
     "dataLoader": {
-        "url": "capital_structure_data.json",
+        "url": "capital_increase_history_data.json",
         "format": "json"
     },
     "categoryField" : "year",
     "titles" : [
         {
             "size": 15,
-            "text": "Chart Title",
+            "text": "股本形成經過",
         },
     ],
     "categoryAxis" : {
@@ -26,7 +26,7 @@ var chart = AmCharts.makeChart("capital_structure_chart_div", {
     "graphs" : [
         {
             "type" : "line", // it's simple line graph
-            "title" : "Cars",
+            "title" : "現金增資",
             "valueField" : "cars",
             "lineAlpha" : 0,
             "fillAlphas" : 0.6, // setting fillAlphas to > 0 value makes it area graph
@@ -34,7 +34,7 @@ var chart = AmCharts.makeChart("capital_structure_chart_div", {
         },
         {
             "type" : "line",
-            "title" : "Motorcycles",
+            "title" : "盈餘轉增資",
             "valueField" : "motorcycles",
             "lineAlpha" : 0,
             "fillAlphas" : 0.6,
@@ -42,7 +42,7 @@ var chart = AmCharts.makeChart("capital_structure_chart_div", {
         },
         {
             "type" : "line",
-            "title" : "Bicycles",
+            "title" : "公積及其他",
             "valueField" : "bicycles",
             "lineAlpha" : 0,
             "fillAlphas" : 0.6,
@@ -55,10 +55,14 @@ var chart = AmCharts.makeChart("capital_structure_chart_div", {
         "valueWidth" : 100,
         "valueAlign" : "left",
         "equalWidths" : false,
-        "periodValueText" : "total: [[value.sum]]",
+        //"periodValueText" : "total: [[value.sum]]",
     },
     "chartCursor" : {
         "zoomable" : false, // as the chart displayes not too many values, we disabled zooming
-        "cursorAlpha" : 0,
+        "cursorPosition": "mouse",
+    },
+    "balloon": {
+        "borderThickness": 1,
+        "shadowAlpha": 0
     },
 });
