@@ -8,7 +8,7 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
     "titles" : [
         {
             "size": 15,
-            "text": "股本形成經過",
+            "text": "股本形成過程及比例",
         },
     ],
     "categoryAxis" : {
@@ -16,6 +16,9 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
         "axisColor" : "#DADADA",
         "startOnAxis" : true,
     },
+    "numberFormatter" : {
+        "precision" : 2, 
+    },    
     "valueAxes" : [
         {
             "title" : "percent", // this line makes the chart "stacked"
@@ -25,7 +28,7 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
     ],
     "graphs" : [
         {
-            "type" : "line", // it's simple line graph
+            "type" : "line", 
             "title" : "現金增資",
             "valueField" : "capital_increase_by_cash",
             "fillAlphas" : 0.6, // setting fillAlphas to > 0 value makes it area graph
@@ -49,9 +52,9 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
     "legend" : {
         "align" : "center",
         "valueText" : "[[value]] ([[percents]]%)",
-        "valueWidth" : 100,
+        //"valueWidth" : 100,
         "valueAlign" : "left",
-        "equalWidths" : false,
+        //"equalWidths" : false,
     },
     "chartCursor" : {
         "zoomable" : false, // as the chart displayes not too many values, we disabled zooming

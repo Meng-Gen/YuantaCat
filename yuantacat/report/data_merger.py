@@ -9,9 +9,10 @@ class DataMerger():
         for stmt_date in stmt_dates: 
             merged = { 'date' : self.__format_date(stmt_date, category_field) }
             for account in data:
-                for account_stmt_date, account_value in data[account]:
+                value_format = data[account]['format']
+                for account_stmt_date, account_value in data[account]['value']:
                     if stmt_date == account_stmt_date:
-                        merged[account] = account_value
+                        merged[account] = self.__format_value(account_value, value_format)
             output.append(merged)
         return output
 
@@ -21,9 +22,15 @@ class DataMerger():
         else:
             return str(date)
 
+    def __format_value(self, value, format):
+        if format == 'percentage':
+            return value * 100
+        else:
+            return value
+
     def __merge_stmt_dates(self, data):
         all_stmt_dates = set()
         for account in data:
-            for stmt_date, value in data[account]:
+            for stmt_date, value in data[account]['value']:
                 all_stmt_dates.add(stmt_date)
         return sorted(list(all_stmt_dates))

@@ -8,9 +8,54 @@
 <script src="./import/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="./import/amcharts/serial.js" type="text/javascript"></script>
 <script src="./import/amcharts/plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
+<script src="./dupont_yearly_chart.js" type="text/javascript"></script>
 <script src="./capital_increase_history_chart.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="capital_increase_history_chart_div" style="width:60%; height:400px;"></div>
+    <h1>經營能力</h1>
+    <h2>杜邦分析</h2>
+    <ul>
+        <li>股東權益報酬率 = 稅後純益 / 股東權益 = 純益率 x 總資產週轉率 x 權益乘數 = 資產報酬率 x 權益乘數</li>
+        <ul>
+            <li>企業為股東賺錢的投資報酬率</li>
+        </ul>
+        <li>資產報酬率 = 稅後純益 / 資產 = 純益率 x 總資產週轉率</li>
+        <ul>
+            <li>企業利用資產創造的收益</li>
+        </ul>
+        <li>純益率 = 稅後純益 / 營業收入</li>
+        <ul>
+            <li>代表每一元營收可以賺到的淨利</li>
+        </ul>
+        <li>資產週轉率 = 營業收入 / 資產</li>
+        <ul>
+            <li>代表資產利用率，力求產能滿載</li>
+        </ul>
+        <li>權益乘數 = 資產 / 股東權益</li>
+        <ul>
+            <li>代表槓桿，數值越大風險可能越高</li>
+        </ul>
+    </ul>
+    <div id="dupont_yearly_chart_div" style="width:60%; height:400px;"></div>
+    <h1>財務結構</h1>
+    <h2>資產負債表分析重點</h2>
+    <ul>
+        <li>自有資本比率 = 股東權益 / 資產</li>
+        <li>負債比率 = 負債 / 資產</li>
+        <ul>
+            <li>觀察企業借貸狀況</li>
+        </ul>
+        <li>權益乘數 = 資產 / 股東權益</li>
+    </ul>
+    <div id="capital_structure_div" style="width:60%; height:400px;"></div>
+    <h2>長期資金占固定資產比率</h2>
+    <ul>
+        <li>長期資金占固定資產比率 = (長期負債 + 股東權益) / 固定資產</li>
+        <li>看長期資金是否充足</li>
+    </ul>
+    <div id="long_term_capital_to_fixed_assets_ratio_div" style="width:60%; height:400px;"></div>
+    <h1>償債能力</h1>
+    <h2>股本形成過程及比例</h2>
+    <div id="capital_increase_history_chart_div" style="width:60%; height:400px;"></div>
 </body>
 </html>

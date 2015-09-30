@@ -2,7 +2,6 @@
 
 from yuantacat.report.capital_increase_history_data_creator import CapitalIncreaseHistoryDataCreator
 
-import datetime
 import unittest
 
 class CapitalIncreaseHistoryDataCreatorTest(unittest.TestCase):
