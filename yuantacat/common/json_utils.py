@@ -17,7 +17,7 @@ class JsonUtils():
         self.__make_directory(dest_path)
 
         with open(dest_path, 'wt') as f:    
-            json.dump(source_json, f)
+            json.dump(source_json, f, indent=4)
         
     def filter_key_list(self, json, key_list):
         output = {}

@@ -4,7 +4,7 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
         "url": "capital_increase_history_data.json",
         "format": "json"
     },
-    "categoryField" : "year",
+    "categoryField" : "date",
     "titles" : [
         {
             "size": 15,
@@ -27,24 +27,21 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
         {
             "type" : "line", // it's simple line graph
             "title" : "現金增資",
-            "valueField" : "cars",
-            "lineAlpha" : 0,
+            "valueField" : "capital_increase_by_cash",
             "fillAlphas" : 0.6, // setting fillAlphas to > 0 value makes it area graph
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
         },
         {
             "type" : "line",
             "title" : "盈餘轉增資",
-            "valueField" : "motorcycles",
-            "lineAlpha" : 0,
+            "valueField" : "capital_increase_by_earnings",
             "fillAlphas" : 0.6,
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
         },
         {
             "type" : "line",
             "title" : "公積及其他",
-            "valueField" : "bicycles",
-            "lineAlpha" : 0,
+            "valueField" : "capital_increase_by_surplus",
             "fillAlphas" : 0.6,
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
         },
@@ -55,7 +52,6 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
         "valueWidth" : 100,
         "valueAlign" : "left",
         "equalWidths" : false,
-        //"periodValueText" : "total: [[value.sum]]",
     },
     "chartCursor" : {
         "zoomable" : false, // as the chart displayes not too many values, we disabled zooming

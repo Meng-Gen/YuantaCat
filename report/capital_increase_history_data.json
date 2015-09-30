@@ -1,110 +1,140 @@
 [
     {
-        "year": "1995",
-        "cars": 1567,
-        "motorcycles": 683,
-        "bicycles": 146
-    },
+        "date": "1993", 
+        "capital_increase_by_cash": 53.00075, 
+        "capital_increase_by_earnings": 27.26106, 
+        "capital_increase_by_surplus": 20.93819
+    }, 
     {
-        "year": "1996",
-        "cars": 1617,
-        "motorcycles": 691,
-        "bicycles": 138
-    },
+        "date": "1994", 
+        "capital_increase_by_cash": 53.00075, 
+        "capital_increase_by_earnings": 30.29706, 
+        "capital_increase_by_surplus": 31.05819
+    }, 
     {
-        "year": "1997",
-        "cars": 1630,
-        "motorcycles": 642,
-        "bicycles": 127
-    },
+        "date": "1995", 
+        "capital_increase_by_cash": 53.00075, 
+        "capital_increase_by_earnings": 44.01978, 
+        "capital_increase_by_surplus": 31.05819
+    }, 
     {
-        "year": "1998",
-        "cars": 1660,
-        "motorcycles": 699,
-        "bicycles": 105
-    },
+        "date": "1996", 
+        "capital_increase_by_cash": 53.00075, 
+        "capital_increase_by_earnings": 52.98529, 
+        "capital_increase_by_surplus": 34.90055
+    }, 
     {
-        "year": "1999",
-        "cars": 1683,
-        "motorcycles": 721,
-        "bicycles": 109
-    },
+        "date": "1997", 
+        "capital_increase_by_cash": 63.0255, 
+        "capital_increase_by_earnings": 58.62075, 
+        "capital_increase_by_surplus": 43.35375
+    }, 
     {
-        "year": "2000",
-        "cars": 1691,
-        "motorcycles": 737,
-        "bicycles": 112
-    },
+        "date": "1998", 
+        "capital_increase_by_cash": 63.0255, 
+        "capital_increase_by_earnings": 65.22075, 
+        "capital_increase_by_surplus": 53.25375
+    }, 
     {
-        "year": "2001",
-        "cars": 1298,
-        "motorcycles": 680,
-        "bicycles": 101
-    },
+        "date": "1999", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 68.85075, 
+        "capital_increase_by_surplus": 67.77375
+    }, 
     {
-        "year": "2002",
-        "cars": 1275,
-        "motorcycles": 664,
-        "bicycles": 97
-    },
+        "date": "2000", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 79.83325, 
+        "capital_increase_by_surplus": 74.36325
+    }, 
     {
-        "year": "2003",
-        "cars": 1246,
-        "motorcycles": 648,
-        "bicycles": 93
-    },
+        "date": "2001", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 79.83325, 
+        "capital_increase_by_surplus": 81.47991
+    }, 
     {
-        "year": "2004",
-        "cars": 1218,
-        "motorcycles": 637,
-        "bicycles": 101
-    },
+        "date": "2002", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 79.83325, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2005",
-        "cars": 1213,
-        "motorcycles": 633,
-        "bicycles": 87
-    },
+        "date": "2003", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 85.24746, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2006",
-        "cars": 1199,
-        "motorcycles": 621,
-        "bicycles": 79
-    },
+        "date": "2004", 
+        "capital_increase_by_cash": 83.0255, 
+        "capital_increase_by_earnings": 95.18426, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2007",
-        "cars": 1110,
-        "motorcycles": 210,
-        "bicycles": 81
-    },
+        "date": "2005", 
+        "capital_increase_by_cash": 87.27902, 
+        "capital_increase_by_earnings": 109.14295, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2008",
-        "cars": 1165,
-        "motorcycles": 232,
-        "bicycles": 75
-    },
+        "date": "2006", 
+        "capital_increase_by_cash": 113.18574, 
+        "capital_increase_by_earnings": 114.60887, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2009",
-        "cars": 1145,
-        "motorcycles": 219,
-        "bicycles": 88
-    },
+        "date": "2007", 
+        "capital_increase_by_cash": 119.75956, 
+        "capital_increase_by_earnings": 118.73748, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2010",
-        "cars": 1163,
-        "motorcycles": 201,
-        "bicycles": 82
-    },
+        "date": "2008", 
+        "capital_increase_by_cash": 119.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2011",
-        "cars": 1180,
-        "motorcycles": 285,
-        "bicycles": 87
-    },
+        "date": "2009", 
+        "capital_increase_by_cash": 119.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
     {
-        "year": "2012",
-        "cars": 1159,
-        "motorcycles": 277,
-        "bicycles": 71
+        "date": "2010", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
+    {
+        "date": "2011", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
+    {
+        "date": "2012", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
+    {
+        "date": "2013", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
+    {
+        "date": "2014", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
+    }, 
+    {
+        "date": "2015", 
+        "capital_increase_by_cash": 159.75956, 
+        "capital_increase_by_earnings": 123.09135, 
+        "capital_increase_by_surplus": 86.36668
     }
 ]
