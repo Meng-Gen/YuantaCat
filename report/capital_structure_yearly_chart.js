@@ -1,14 +1,14 @@
-var chart = AmCharts.makeChart("dupont_yearly_chart_div", {
+var chart = AmCharts.makeChart("capital_structure_yearly_chart_div", {
     "type" : "serial",
     "dataLoader": {
-        "url": "dupont_yearly_data.json",
+        "url": "capital_structure_yearly_data.json",
         "format": "json"
     },
     "categoryField" : "date",
     "titles" : [
         {
             "size": 15,
-            "text": "杜邦分析(年)",
+            "text": "財務結構分析",
         },
     ],
     "categoryAxis" : {
@@ -48,34 +48,34 @@ var chart = AmCharts.makeChart("dupont_yearly_chart_div", {
         {
             "valueAxis": "left_axis",
             "type" : "line", 
-            "title" : "ROE (%)",
-            "valueField" : "roe",
+            "title" : "自有資本比率 (%)",
+            "valueField" : "equity_ratio",
             "bullet" : "round",
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
         },
         {
             "valueAxis": "left_axis",
             "type" : "line",
-            "title" : "ROA (%)",
-            "valueField" : "roa",
+            "title" : "負債比率 (%)",
+            "valueField" : "liabilities_ratio",
             "bullet" : "square",
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
         },
         {
             "valueAxis": "left_axis",
             "type" : "line",
-            "title" : "純益率 (%)",
-            "valueField" : "ros",
+            "title" : "實質負債比 (%)",
+            "valueField" : "true_liabilities_ratio",
             "bullet" : "triangleUp",
             "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
         },
         {
-            "valueAxis": "minor_left_axis",
+            "valueAxis": "right_axis",
             "type" : "line",
-            "title" : "總資產週轉率 (%)",
-            "valueField" : "ato",
+            "title" : "長期資金占固定資產比率",
+            "valueField" : "long_term_capital_to_fixed_assets_ratio",
             "bullet" : "triangleDown",
-            "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
+            "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
         },        
         {
             "valueAxis": "right_axis",
