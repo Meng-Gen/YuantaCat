@@ -25,6 +25,8 @@ class DataMerger():
     def __format_value(self, value, format):
         if format == 'percentage':
             return value * 100
+        elif format == 'integer':
+            return int(value)
         else:
             return value
 
