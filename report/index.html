@@ -7,6 +7,9 @@
 <script src="./import/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="./import/amcharts/serial.js" type="text/javascript"></script>
 <script src="./import/amcharts/plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
+<script src="./import/purl.js" type="text/javascript"></script>
+
+
 <script src="./capital_structure_yearly_chart.js" type="text/javascript"></script>
 <script src="./capital_increase_history_chart.js" type="text/javascript"></script>
 <script src="./cash_flow_yearly_chart.js" type="text/javascript"></script>
@@ -21,6 +24,13 @@
 <script src="./revenue_index_yearly_chart.js" type="text/javascript"></script>
 </head>
 <body>
+<script type="text/javascript">
+var url = purl(); // parse the current page URL
+var url = purl(location.search); // pass in a URI as a string and parse that 
+console.log(url.param('stock_symbol'));
+var dataPathPiece = ['./yuantacat/data/report/capital_structure/yearly/', url.param('stock_symbol'), '.json'];
+console.log(dataPathPiece.join(''));
+</script>
     <h1>經營能力</h1>
     <h2>杜邦分析</h2>
     <div id="dupont_yearly_chart_div" style="width:60%; height:400px;"></div>
