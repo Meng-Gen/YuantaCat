@@ -11,11 +11,6 @@ var chart = AmCharts.makeChart("ccc_yearly_chart_div", {
             "text" : "現金轉換循環",
         },
     ],
-    "categoryAxis" : {
-        "gridAlpha" : 0.07,
-        "axisColor" : "#DADADA",
-        "startOnAxis" : true,
-    },
     "numberFormatter" : {
         "precision" : 1, 
     },
@@ -23,7 +18,6 @@ var chart = AmCharts.makeChart("ccc_yearly_chart_div", {
         {
             "id" : "left_axis",
             "axisThickness" : 2,
-            "gridAlpha" : 0,
             "axisAlpha" : 1,
             "position" : "left",
             "title" : "Days",

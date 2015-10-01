@@ -8,14 +8,9 @@ var chart = AmCharts.makeChart("liquidity_yearly_chart_div", {
     "titles" : [
         {
             "size": 15,
-            "text": "償債能力(年)",
+            "text": "償債能力",
         },
     ],
-    "categoryAxis" : {
-        "gridAlpha" : 0.07,
-        "axisColor" : "#DADADA",
-        "startOnAxis" : true,
-    },
     "numberFormatter" : {
         "precision" : 2, 
     },
@@ -23,7 +18,6 @@ var chart = AmCharts.makeChart("liquidity_yearly_chart_div", {
         {
             "id" : "left_axis",
             "axisThickness" : 2,
-            "gridAlpha" : 0,
             "axisAlpha" : 1,
             "position" : "left",
             "title" : "%",

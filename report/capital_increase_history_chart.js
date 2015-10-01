@@ -11,11 +11,6 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
             "text": "股本形成過程及比例",
         },
     ],
-    "categoryAxis" : {
-        "gridAlpha" : 0.07,
-        "axisColor" : "#DADADA",
-        "startOnAxis" : true,
-    },
     "numberFormatter" : {
         "precision" : 2, 
     },    
@@ -23,7 +18,6 @@ var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
         {
             "title" : "percent", // this line makes the chart "stacked"
             "stackType" : "100%",
-            "gridAlpha" : 0.07,
         },
     ],
     "graphs" : [

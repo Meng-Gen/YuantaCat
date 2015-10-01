@@ -7,4 +7,6 @@ import unittest
 class OperatingRevenueDataCreatorTest(unittest.TestCase):
     def test_create_1101(self):
         creator = OperatingRevenueDataCreator()
-        creator.create({ 'stock_symbol' : '1101' })
+        creator.create({ 
+            'stock_symbol' : '1101' 
+        })

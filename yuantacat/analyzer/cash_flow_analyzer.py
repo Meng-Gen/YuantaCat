@@ -42,6 +42,10 @@ class CashFlowAnalyzer():
         cash_flow_from_investing_activities = self.time_series.get('CashFlowFromInvestingActivities')
         return cash_flow_from_operating_activities + cash_flow_from_investing_activities
 
+    def get_accumulated_free_cash_flow(self):
+        free_cash_flow = self.get_free_cash_flow()
+        return free_cash_flow.accumulate()
+
     def get_long_term_investments_to_assets_ratio(self):
         long_term_investments = self.time_series.get('LongTermInvestments')
         assets = self.time_series.get('Assets')

@@ -11,3 +11,10 @@ class ProfitabilityDataCreatorTest(unittest.TestCase):
             'stock_symbol' : '1101',
             'period' : 'Y', 
         })
+
+    def test_create_quarterly_1101(self):
+        creator = ProfitabilityDataCreator()
+        creator.create({ 
+            'stock_symbol' : '1101',
+            'period' : 'Q', 
+        })

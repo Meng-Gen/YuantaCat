@@ -11,11 +11,6 @@ var chart = AmCharts.makeChart("capital_structure_yearly_chart_div", {
             "text": "財務結構分析",
         },
     ],
-    "categoryAxis" : {
-        "gridAlpha" : 0.07,
-        "axisColor" : "#DADADA",
-        "startOnAxis" : true,
-    },
     "numberFormatter" : {
         "precision" : 2, 
     },
@@ -23,7 +18,6 @@ var chart = AmCharts.makeChart("capital_structure_yearly_chart_div", {
         {
             "id" : "left_axis",
             "axisThickness" : 2,
-            "gridAlpha" : 0,
             "axisAlpha" : 1,
             "position" : "left",
         }, 

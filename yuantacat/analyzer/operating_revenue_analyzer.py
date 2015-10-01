@@ -18,17 +18,13 @@ class OperatingRevenueAnalyzer():
         return operating_revenue
 
     def get_accumulated_operating_revenue(self):
-        operating_revenue = self.time_series.get('OperatingRevenue')
-        return operating_revenue.accumulate()
+        return self.get_operating_revenue().accumulate_annually()
 
     def get_accumulated_operating_revenue_yoy(self):
-        operating_revenue = self.time_series.get('OperatingRevenue')
-        return operating_revenue.accumulate().get_yoy()
+        return self.get_accumulated_operating_revenue().get_yoy()
 
     def get_long_term_average(self):
-        operating_revenue = self.time_series.get('OperatingRevenue')
-        return operating_revenue.get_moving_average(12)
+        return self.get_operating_revenue().get_moving_average(12)
 
     def get_short_term_average(self):
-        operating_revenue = self.time_series.get('OperatingRevenue')
-        return operating_revenue.get_moving_average(3)
+        return self.get_operating_revenue().get_moving_average(3)

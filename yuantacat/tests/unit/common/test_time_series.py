@@ -146,14 +146,14 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2003, 12, 31), 3.0),
         ]) 
 
-    def test_accumulate(self):
+    def test_accumulate_annually(self):
         x = TimeSeries([
             (datetime.date(2001, 3, 31), 1),
             (datetime.date(2001, 6, 30), 2),
             (datetime.date(2001, 9, 30), 3),
             (datetime.date(2001, 12, 31), 4),
         ])
-        z = x.accumulate()
+        z = x.accumulate_annually()
         self.assertEqual(z.get(), [
             (datetime.date(2001, 3, 31), 1), 
             (datetime.date(2001, 6, 30), 3),

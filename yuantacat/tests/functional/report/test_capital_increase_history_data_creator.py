@@ -7,4 +7,6 @@ import unittest
 class CapitalIncreaseHistoryDataCreatorTest(unittest.TestCase):
     def test_create_1101(self):
         creator = CapitalIncreaseHistoryDataCreator()
-        creator.create({ 'stock_symbol' : '1101' })
+        creator.create({ 
+            'stock_symbol' : '1101' 
+        })
