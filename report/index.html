@@ -12,96 +12,27 @@
 <script src="./dupont_yearly_chart.js" type="text/javascript"></script>
 <script src="./liquidity_yearly_chart.js" type="text/javascript"></script>
 <script src="./operating_revenue_chart.js" type="text/javascript"></script>
+<script src="./profitability_yearly_chart.js" type="text/javascript"></script>
 </head>
 <body>
     <h1>經營能力</h1>
     <h2>杜邦分析</h2>
-    <ul>
-        <li>股東權益報酬率 = 稅後純益 / 股東權益 = 純益率 x 總資產週轉率 x 權益乘數 = 資產報酬率 x 權益乘數</li>
-        <ul>
-            <li>企業為股東賺錢的投資報酬率</li>
-        </ul>
-        <li>資產報酬率 = 稅後純益 / 資產 = 純益率 x 總資產週轉率</li>
-        <ul>
-            <li>企業利用資產創造的收益</li>
-        </ul>
-        <li>純益率 = 稅後純益 / 營業收入</li>
-        <ul>
-            <li>代表每一元營收可以賺到的淨利</li>
-        </ul>
-        <li>資產週轉率 = 營業收入 / 資產</li>
-        <ul>
-            <li>代表資產利用率，力求產能滿載</li>
-        </ul>
-        <li>權益乘數 = 資產 / 股東權益</li>
-        <ul>
-            <li>代表槓桿，數值越大風險可能越高</li>
-        </ul>
-    </ul>
     <div id="dupont_yearly_chart_div" style="width:60%; height:400px;"></div>
     
     <h1>財務結構</h1>
     <h2>資產負債表分析重點</h2>
-    <ul>
-        <li>自有資本比率 = 股東權益 / 資產</li>
-        <li>負債比率 = 負債 / 資產</li>
-        <ul>
-            <li>觀察企業借貸狀況</li>
-        </ul>
-        <li>權益乘數 = 資產 / 股東權益</li>
-        <li>長期資金占固定資產比率</li>
-        <ul>
-            <li>長期資金占固定資產比率 = (長期負債 + 股東權益) / 固定資產</li>
-            <li>看長期資金是否充足</li>
-        </ul>
-    </ul>
     <div id="capital_structure_yearly_chart_div" style="width:60%; height:400px;"></div>
-    
-    <h1>償債能力</h1>
-    <h2>流動比率 = 流動資產 / 流動負債</h2>
-    <ul>
-        <li>數值越高代表流動資金越充足</li>
-    </ul>
-    <h2>速動比率 = 速動資產 / 流動負債</h2>
-    <ul>
-        <li>進一步觀察流動性較高的資產</li>
-    </ul>
-    <h2>利息保障倍數 = 稅前息前淨利 / 利息費用</h2>
-    <ul>
-        <li>越高代表長期貸款償債能力佳</li>
-    </ul>
-    <div id="liquidity_yearly_chart_div" style="width:60%; height:400px;"></div>
     <h2>股本形成過程及比例</h2>
     <div id="capital_increase_history_chart_div" style="width:60%; height:400px;"></div>
-
+    
+    <h1>償債能力</h1>
+    <div id="liquidity_yearly_chart_div" style="width:60%; height:400px;"></div>
 
     <h1>獲利能力</h1>
     <h2>損益表分析重點</h2>
-    <ul>
-        <li>毛利率 = 營業毛利 / 營業收入</li>
-        <ul>
-            <li>毛利率越高產品競爭力越強</li>
-        </ul>
-        <li>營業利益率 = 營業利益 / 營業收入</li>
-        <ul>
-            <li>代表企業持續賺錢的能力</li>
-        </ul>
-        <li>稅前純益率 = 稅前純益 / 營業收入</li>
-        <ul>
-            <li>排除所得稅干擾，更貼近公司經營績效</li>
-        </ul>
-        <li>稅後純益率 = 稅後純益 / 營業收入</li>
-        <ul>
-            <li>影響股東權益</li>
-        </ul>
-    </ul>
+    <div id="profitability_yearly_chart_div" style="width:60%; height:400px;"></div>
 
     <h2>每月營業收入分析重點</h2>
-    <ul>
-        <li>累積營收年增率</li>
-        <li>長期平均線 (12ma)</li>
-        <li>短期平均線 (3ma)</li>
-    </ul>
     <div id="operating_revenue_chart_div" style="width:60%; height:400px;"></div>
 
     <h2>五大盈餘指標</h2>

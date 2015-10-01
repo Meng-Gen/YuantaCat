@@ -1,0 +1,58 @@
+[
+    {
+        "date": "2007-12-31", 
+        "net_profit_before_tax_margin": 16.864766129558355, 
+        "operating_profit_margin": 16.820405766847152, 
+        "gross_profit_margin": 20.079587709570095, 
+        "net_profit_margin": 14.555417835475243
+    }, 
+    {
+        "date": "2008-12-31", 
+        "net_profit_before_tax_margin": 8.384622246008384, 
+        "operating_profit_margin": 6.275724097506276, 
+        "gross_profit_margin": 9.8997158403099, 
+        "net_profit_margin": 8.24955082380825
+    }, 
+    {
+        "date": "2009-12-31", 
+        "net_profit_before_tax_margin": 14.03045942583291, 
+        "operating_profit_margin": 14.373761577807475, 
+        "gross_profit_margin": 17.895488687157275, 
+        "net_profit_margin": 13.480945578544768
+    }, 
+    {
+        "date": "2010-12-31", 
+        "net_profit_before_tax_margin": 14.077226548155961, 
+        "operating_profit_margin": 14.7391414878492, 
+        "gross_profit_margin": 18.35660549681283, 
+        "net_profit_margin": 12.61310459762539
+    }, 
+    {
+        "date": "2011-12-31", 
+        "net_profit_before_tax_margin": 13.946344633197466, 
+        "operating_profit_margin": 13.648446796121421, 
+        "gross_profit_margin": 17.363308775749598, 
+        "net_profit_margin": 11.585103420339756
+    }, 
+    {
+        "date": "2012-12-31", 
+        "net_profit_before_tax_margin": 10.104223347704156, 
+        "operating_profit_margin": 10.943870076597882, 
+        "gross_profit_margin": 14.824829433677955, 
+        "net_profit_margin": 8.33619354568666
+    }, 
+    {
+        "date": "2013-12-31", 
+        "net_profit_before_tax_margin": 16.024255161543167, 
+        "operating_profit_margin": 15.311070724123377, 
+        "gross_profit_margin": 19.658222723709937, 
+        "net_profit_margin": 13.022506653804081
+    }, 
+    {
+        "date": "2014-12-31", 
+        "net_profit_before_tax_margin": 17.915758159660598, 
+        "operating_profit_margin": 16.782448489765564, 
+        "gross_profit_margin": 21.02073931342224, 
+        "net_profit_margin": 14.015516454540844
+    }
+]
