@@ -16,5 +16,5 @@ class DupontDataCreatorTest(unittest.TestCase):
         creator = DupontDataCreator()
         creator.create({ 
             'stock_symbol' : '1101',
-            'period' : 'Y', 
+            'period' : 'Q', 
         })
