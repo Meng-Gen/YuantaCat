@@ -22,6 +22,13 @@ class ProfitabilityDataCreator():
         operating_profit_margin = analyzer.get_operating_profit_margin().get()
         net_profit_before_tax_margin = analyzer.get_net_profit_before_tax_margin().get()
         net_profit_margin = analyzer.get_net_profit_margin().get()
+
+        # Cash Conversion Cycle (CCC)
+        dio = analyzer.get_dio().get()
+        dso = analyzer.get_dso().get()
+        dpo = analyzer.get_dpo().get()
+        ccc = analyzer.get_cash_conversion_cycle().get()
+
         return {
             'gross_profit_margin' : { 
                 'value' : gross_profit_margin,
@@ -38,6 +45,22 @@ class ProfitabilityDataCreator():
             'net_profit_margin' : {
                 'value' : net_profit_margin,
                 'format' : 'percentage',
+            },
+            'dio' : {
+                'value' : dio,
+                'format' : 'float',
+            },
+            'dso' : {
+                'value' : dso,
+                'format' : 'float',
+            },
+            'dpo' : {
+                'value' : dpo,
+                'format' : 'float',
+            },
+            'ccc' : {
+                'value' : ccc,
+                'format' : 'float',
             },
         }
 
