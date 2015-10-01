@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("long_term_investments_to_assets_ratio_yearly_chart_div", {
+var chart = AmCharts.makeChart("long_term_investments_to_assets_ratio_yearly_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "cash_flow_yearly_data.json",

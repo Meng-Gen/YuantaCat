@@ -48,6 +48,6 @@ class RevenueIndexDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './yuantacat/data/report/revenue_index/yearly/'
+            return './report/chart/revenue_index/yearly/'
         elif param['period'] == 'Q':
-            return './yuantacat/data/report/revenue_index/quarterly/'
+            return './report/chart/revenue_index/quarterly/'

@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("capital_structure_yearly_chart_div", {
+var chart = AmCharts.makeChart("capital_structure_yearly_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "capital_structure_yearly_data.json",

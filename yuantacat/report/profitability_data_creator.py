@@ -66,6 +66,6 @@ class ProfitabilityDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './yuantacat/data/report/profitability/yearly/'
+            return './report/chart/profitability/yearly/'
         elif param['period'] == 'Q':
-            return './yuantacat/data/report/profitability/quarterly/'
+            return './report/chart/profitability/quarterly/'

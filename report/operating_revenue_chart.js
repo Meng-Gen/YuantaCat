@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("operating_revenue_chart_div", {
+var chart = AmCharts.makeChart("operating_revenue_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "operating_revenue_data.json",

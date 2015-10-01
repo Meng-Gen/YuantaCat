@@ -58,6 +58,6 @@ class CashFlowDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './yuantacat/data/report/cash_flow/yearly/'
+            return './report/chart/cash_flow/yearly/'
         elif param['period'] == 'Q':
-            return './yuantacat/data/report/cash_flow/quarterly/'
+            return './report/chart/cash_flow/quarterly/'

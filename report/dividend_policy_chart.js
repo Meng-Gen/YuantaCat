@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("dividend_policy_chart_div", {
+var chart = AmCharts.makeChart("dividend_policy_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "dividend_policy_data.json",

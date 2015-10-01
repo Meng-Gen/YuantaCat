@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("ccc_yearly_chart_div", {
+var chart = AmCharts.makeChart("ccc_yearly_chart", {
     "type" : "serial",
     "dataLoader" : {
         "url" : "profitability_yearly_data.json",

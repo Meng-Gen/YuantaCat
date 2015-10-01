@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("liquidity_yearly_chart_div", {
+var chart = AmCharts.makeChart("liquidity_yearly_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "liquidity_yearly_data.json",

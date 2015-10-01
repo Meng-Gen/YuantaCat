@@ -12,7 +12,7 @@ class CapitalIncreaseHistoryDataCreator():
             'stock_symbol' : param['stock_symbol'], 
             'data' : self.__build_data_param(param),
             'category_field' : 'year',
-            'base_path' : './yuantacat/data/report/capital_increase_history/',
+            'base_path' : './report/chart/capital_increase_history/',
         }
         return self.data_creator.create(create_param)
 

@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("capital_increase_history_chart_div", {
+var chart = AmCharts.makeChart("capital_increase_history_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "capital_increase_history_data.json",

@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart("net_income_to_operating_activities_yearly_chart_div", {
+var chart = AmCharts.makeChart("net_income_to_operating_activities_yearly_chart", {
     "type" : "serial",
     "dataLoader": {
         "url": "cash_flow_yearly_data.json",

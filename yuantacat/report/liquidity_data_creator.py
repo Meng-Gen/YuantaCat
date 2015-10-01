@@ -38,6 +38,6 @@ class LiquidityDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './yuantacat/data/report/liquidity/yearly/'
+            return './report/chart/liquidity/yearly/'
         elif param['period'] == 'Q':
-            return './yuantacat/data/report/liquidity/quarterly/'
+            return './report/chart/liquidity/quarterly/'

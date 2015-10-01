@@ -48,6 +48,6 @@ class DupontDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './yuantacat/data/report/dupont/yearly/'
+            return './report/chart/dupont/yearly/'
         elif param['period'] == 'Q':
-            return './yuantacat/data/report/dupont/quarterly/'
+            return './report/chart/dupont/quarterly/'
