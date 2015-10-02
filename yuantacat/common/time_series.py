@@ -104,8 +104,16 @@ class TimeSeries(object):
         return self.execute_binary_operation(operator.mul, other_time_series)
 
     def accumulate(self):
+        output = []
+        accumulated_value = 0.0
+        for stmt_date, value in self.time_series:
+            accumulated_value += value
+            output.append((stmt_date, accumulated_value))
+        return TimeSeries(output)
+
+    def accumulate_annually(self):
         if not self.time_series:
-            return []
+            return TimeSeries([])
         output = []
         first_stmt_date, first_value = self.time_series[0]
         current_year = first_stmt_date.year
