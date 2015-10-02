@@ -3,6 +3,7 @@
 from yuantacat.common.date_utils import DateUtils
 
 import datetime
+import logging
 import operator
 
 class TimeSeries(object):
@@ -44,6 +45,7 @@ class TimeSeries(object):
         return TimeSeries(time_series)
 
     def __init__(self, time_series):
+        self.logger = logging.getLogger(__name__)
         self.time_series = sorted(time_series)
         self.date_utils = DateUtils()
 
@@ -66,8 +68,11 @@ class TimeSeries(object):
     def get_inverse(self):
         output = []
         for stmt_date, value in self.time_series:
-            z = 1.0 / float(value) 
-            output.append((stmt_date, z))
+            try:
+                z = 1.0 / float(value) 
+                output.append((stmt_date, z))
+            except ZeroDivisionError as e:
+                self.logger.error(e)
         return TimeSeries(output)
 
     def get_average(self):
@@ -79,8 +84,11 @@ class TimeSeries(object):
         for i in range(count):
             stmt_date = self.time_series[i][0]
             value_list = [self.time_series[i][1] for i in range(max(i - n + 1, 0), i + 1)]
-            z = float(sum(value_list)) / float(len(value_list))
-            output.append((stmt_date, z))
+            try:
+                z = float(sum(value_list)) / float(len(value_list))
+                output.append((stmt_date, z))
+            except ZeroDivisionError as e:
+                self.logger.error(e)
         return TimeSeries(output)
 
     def execute_binary_operation(self, operator, other_time_series):
@@ -88,8 +96,11 @@ class TimeSeries(object):
         other_map = other_time_series.get_map()
         for stmt_date, value in self.time_series:
             if stmt_date in other_map:
-                z = operator(float(value), float(other_map[stmt_date]))
-                output.append((stmt_date, z))
+                try:
+                    z = operator(float(value), float(other_map[stmt_date]))
+                    output.append((stmt_date, z))
+                except ZeroDivisionError as e:
+                    self.logger.error(e)
         return TimeSeries(output)
 
     def __add__(self, other_time_series):
@@ -133,9 +144,12 @@ class TimeSeries(object):
         for stmt_date, value in self.time_series:
             prev_stmt_date = self.date_utils.get_last_date_of_month_in_prev_year(stmt_date)
             if prev_stmt_date in time_series_map:
-                prev_value = time_series_map[prev_stmt_date]
-                yoy = (float(value) - float(prev_value)) / float(prev_value)
-                output.append((stmt_date, yoy))
+                try:
+                    prev_value = time_series_map[prev_stmt_date]
+                    yoy = (float(value) - float(prev_value)) / float(prev_value)
+                    output.append((stmt_date, yoy))
+                except ZeroDivisionError as e:
+                    self.logger.error(e)                
         return TimeSeries(output)
 
     def shift(self):
