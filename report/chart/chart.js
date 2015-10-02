@@ -776,6 +776,11 @@ function makeOperatingRevenueChart(stockSymbol) {
             "format" : "json"
         },
         "categoryField" : "date",
+        "categoryAxis" : {
+            "parseDates" : false,
+            "autoGridCount" : true,
+            "minHorizontalGap" : 100,
+        },
         "titles" : [
             {
                 "size" : 15,
