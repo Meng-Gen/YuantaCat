@@ -38,7 +38,8 @@ class TimeSeries(object):
         time_series = []
         for stmt_date in group:
             latest_date, value = sorted(group[stmt_date])[-1]
-            time_series.append((stmt_date, value))
+            if value:
+                time_series.append((stmt_date, value))
 
         return TimeSeries(time_series)
 
