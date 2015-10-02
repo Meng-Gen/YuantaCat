@@ -113,7 +113,7 @@ class TimeSeries(object):
 
     def accumulate_annually(self):
         if not self.time_series:
-            return []
+            return TimeSeries([])
         output = []
         first_stmt_date, first_value = self.time_series[0]
         current_year = first_stmt_date.year
