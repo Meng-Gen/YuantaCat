@@ -150,6 +150,7 @@ function makeContent(content) {
     for (var i = 0; i < charts.length; i++) {
         var chartElement = document.createElement('div');
         chartElement.id = charts[i];
+        chartElement.className = 'chart';
         rootElement.appendChild(chartElement);
     }
 

@@ -1,25 +1,4 @@
-#dupont_yearly_chart,
-#dupont_quarterly_chart,
-#capital_structure_yearly_chart, 
-#capital_structure_quarterly_chart, 
-#capital_increase_history_chart,
-#liquidity_yearly_chart,
-#liquidity_quarterly_chart,
-#profitability_yearly_chart,
-#profitability_quarterly_chart,
-#operating_revenue_chart,
-#revenue_index_yearly_chart,
-#revenue_index_quarterly_chart,
-#ccc_yearly_chart,
-#ccc_quarterly_chart,
-#cash_flow_yearly_chart,
-#cash_flow_quarterly_chart,
-#long_term_investments_to_assets_ratio_yearly_chart,
-#long_term_investments_to_assets_ratio_quarterly_chart,
-#net_income_to_operating_activities_yearly_chart,
-#net_income_to_operating_activities_quarterly_chart,
-#dividend_policy_chart
-{
+.chart {
     width : 60%;
     height : 400px;    
 }
