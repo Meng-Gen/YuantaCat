@@ -3,15 +3,16 @@ function getStockSymbol() {
     return url.param('stock_symbol') || '1101';
 }
 
-function initTitle() {
-    var titleElement = document.createElement('h1');
-    titleElement.innerHTML = '財務比率分析 - ' + getStockSymbol();
-    var rootElement = document.getElementById('root');
-    rootElement.appendChild(titleElement);
+function initHeader() {
+    var headerElement = document.createElement('div');
+    headerElement.className = 'title';
+    headerElement.innerHTML = '財務比率分析 - ' + getStockSymbol();
+    var rootElement = document.getElementById('header');
+    rootElement.appendChild(headerElement);
 }
 
 function initSections() {
-    var rootElement = document.getElementById('root');
+    var rootElement = document.getElementById('sections');
     rootElement.appendChild(makeSections());
 }
 
@@ -41,7 +42,7 @@ function initCharts() {
 }
 
 function init() {
-    initTitle();
+    initHeader();
     initSections();
     initCharts(); 
 }
