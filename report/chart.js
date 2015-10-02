@@ -596,7 +596,6 @@ function makeLiquidityChart(stockSymbol, period) {
                 "axisThickness" : 2,
                 "axisAlpha" : 1,
                 "position" : "left",
-                "title" : "%",
             }, 
             {
                 "id" : "right_axis",
@@ -610,18 +609,18 @@ function makeLiquidityChart(stockSymbol, period) {
             {
                 "valueAxis": "left_axis",
                 "type" : "line", 
-                "title" : "流動比率 (%)",
+                "title" : "流動比率",
                 "valueField" : "current_ratio",
                 "bullet" : "round",
-                "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
+                "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
             },
             {
                 "valueAxis": "left_axis",
                 "type" : "line",
-                "title" : "速動比率 (%)",
+                "title" : "速動比率",
                 "valueField" : "quick_ratio",
                 "bullet" : "square",
-                "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]%</b></span>",
+                "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
             },
             {
                 "valueAxis": "right_axis",
@@ -630,6 +629,18 @@ function makeLiquidityChart(stockSymbol, period) {
                 "valueField" : "interest_protection_multiples",
                 "bullet" : "diamond",
                 "balloonText" : "<span style='font-size:14px; color:#000000;'><b>[[value]]</b></span>",
+            },
+        ],
+        "guides" : [
+            {
+                value: "1.0",
+                lineColor: "#CC0000",
+                lineAlpha: 1,
+                lineThickness: 2,
+                fillAlpha: 0.2,
+                fillColor: "#CC0000",
+                dashLength: 2,
+                inside: true,
             },
         ],
         "legend" : {
