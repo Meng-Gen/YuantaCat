@@ -12,7 +12,7 @@ class OperatingRevenueDataCreator():
             'stock_symbol' : param['stock_symbol'], 
             'data' : self.__build_data_param(param),
             'category_field' : 'date',
-            'base_path' : './report/chart/operating_revenue/',
+            'base_path' : './report/chart/data/operating_revenue/',
         }
         return self.data_creator.create(create_param)
 

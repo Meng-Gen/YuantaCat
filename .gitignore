@@ -64,4 +64,4 @@ target/
 
 # Data directory
 yuantacat/data/
-report/chart/
+report/chart/data/

@@ -12,7 +12,7 @@ class DividendPolicyDataCreator():
             'stock_symbol' : param['stock_symbol'], 
             'data' : self.__build_data_param(param),
             'category_field' : 'year',
-            'base_path' : './report/chart/dividend_policy/',
+            'base_path' : './report/chart/data/dividend_policy/',
         }
         return self.data_creator.create(create_param)
 

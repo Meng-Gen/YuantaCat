@@ -48,6 +48,6 @@ class CapitalStructureDataCreator():
 
     def __build_base_path(self, param):
         if param['period'] == 'Y':
-            return './report/chart/capital_structure/yearly/'
+            return './report/chart/data/capital_structure/yearly/'
         elif param['period'] == 'Q':
-            return './report/chart/capital_structure/quarterly/'
+            return './report/chart/data/capital_structure/quarterly/'

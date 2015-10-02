@@ -1,8 +1,3 @@
-function getStockSymbol() {
-    var url = purl(location.search); 
-    return url.param('stock_symbol') || '1101';
-}
-
 function makeTitleCommentText(period) {
     if (period === 'yearly') {
         return '(年)';
@@ -24,12 +19,12 @@ function makeDiv(chartText) {
 }
 
 function makeDataPathByPeriod(chartText, stockSymbol, period) {
-    var pathPieces = ['chart', '/', chartText, '/', period || 'yearly', '/', stockSymbol, '.json'];
+    var pathPieces = ['chart/data', '/', chartText, '/', period || 'yearly', '/', stockSymbol, '.json'];
     return pathPieces.join('');
 }
 
 function makeDataPath(chartText, stockSymbol) {
-    var pathPieces = ['chart', '/', chartText, '/', stockSymbol, '.json'];
+    var pathPieces = ['chart/data', '/', chartText, '/', stockSymbol, '.json'];
     return pathPieces.join('');
 }
 
@@ -1019,26 +1014,3 @@ function makeRevenueIndex(stockSymbol, period) {
     };
     AmCharts.makeChart(div, config);
 }
-
-var stockSymbol = getStockSymbol();
-makeCapitalStructureChart(stockSymbol, 'yearly');
-makeCapitalStructureChart(stockSymbol, 'quarterly');
-makeCapitalIncreaseHistoryChart(stockSymbol);
-makeCashFlowChart(stockSymbol, 'yearly');
-makeCashFlowChart(stockSymbol, 'quarterly');
-makeCccChart(stockSymbol, 'yearly');
-makeCccChart(stockSymbol, 'quarterly');
-makeDividendPolicy(stockSymbol);
-makeDupontChart(stockSymbol, 'yearly');
-makeDupontChart(stockSymbol, 'quarterly');
-makeLiquidityChart(stockSymbol, 'yearly');
-makeLiquidityChart(stockSymbol, 'quarterly');
-makeLongTermInvestmentsToAssetsRatioChart(stockSymbol, 'yearly');
-makeLongTermInvestmentsToAssetsRatioChart(stockSymbol, 'quarterly');
-makeNetIncomeToOperatingActivitiesChart(stockSymbol, 'yearly');
-makeNetIncomeToOperatingActivitiesChart(stockSymbol, 'quarterly');
-makeOperatingRevenueChart(stockSymbol);
-makeProfitabilityChart(stockSymbol, 'yearly');
-makeProfitabilityChart(stockSymbol, 'quarterly');
-makeRevenueIndex(stockSymbol, 'yearly');
-makeRevenueIndex(stockSymbol, 'quarterly');
