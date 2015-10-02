@@ -113,9 +113,7 @@ function makeSections() {
         var sectionElement = makeSection(sections[i]);
         rootElement.appendChild(sectionElement);
     }
-
-    console.log(rootElement);
-
+    
     return rootElement;
 }
 
