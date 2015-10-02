@@ -12,7 +12,7 @@ function initHeader() {
 }
 
 function initSections() {
-    var rootElement = document.getElementById('sections');
+    var rootElement = document.getElementById('content');
     rootElement.appendChild(makeSections());
 }
 
