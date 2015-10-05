@@ -25,15 +25,16 @@ Step 3. Install psycopg2 package
 4. pip install psycopg2
 ```
 
-Step 4. Install PostgreSQL 9.x
+Step 4. Install PostgreSQL 9.4 (or newer)
 
-Step 5. Install curl 
+Step 5. Install Apache
 
-Run
+Step 6. Install curl 
+
+Run 
 ---
 Step 1. Git clone: ```git clone https://github.com/Meng-Gen/YuantaCat.git```
 
 Step 2. Run script: ```python main.py```
 
-Step 3. Synchronize site: ```cp -rf report/ <SITE_DIR>```
-
+Step 3. Synchronize site: ```cp -rf report/ ~/Site/yuantacat/```
