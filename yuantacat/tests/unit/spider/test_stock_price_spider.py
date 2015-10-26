@@ -9,7 +9,7 @@ class StockPriceSpiderTest(unittest.TestCase):
         spider = StockPriceSpider()
         param = { 
             'stock_symbol' : '2498',
-            'market_type' : 'stock_exchange_market',
+            'market_category' : 'TW',
         }
         spider.crawl(param)
         self.assertTrue(spider.is_crawled(param))

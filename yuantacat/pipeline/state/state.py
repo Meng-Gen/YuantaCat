@@ -13,5 +13,5 @@ class State():
     def tear_down(self):
         pass
 
-    def avoid_blocking(self, a=3, b=5):
+    def avoid_blocking(self, a=1, b=2):
         time.sleep(random.randint(a, b))
