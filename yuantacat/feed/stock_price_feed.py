@@ -25,7 +25,7 @@ class StockPriceFeedBuilder():
                     'release_date' : release_date,
                     'stock_symbol' : stock_symbol,
                     'stmt_date' : stmt_date, 
-                    'account' : account,
+                    'account' : column_name_list[j],
                     'account_order' : j,
                     'value' : row[j],
                     'period' : period,
