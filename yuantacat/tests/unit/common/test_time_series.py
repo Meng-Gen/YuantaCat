@@ -174,3 +174,159 @@ class TimeSeriesTest(unittest.TestCase):
             (datetime.date(2001, 9, 30), 2),
             (datetime.date(2001, 12, 31), 3),
         ])
+
+    def test_group_by_period_Q(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.group_by_period('Q')
+        z_map = z.get_map()
+        self.assertEqual(z_map[datetime.date(2001, 3, 31)].get(), [
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+        ])
+        self.assertEqual(z_map[datetime.date(2001, 6, 30)].get(), [
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+        ])
+        self.assertEqual(z_map[datetime.date(2001, 9, 30)].get(), [
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+        ])
+        self.assertEqual(z_map[datetime.date(2001, 12, 31)].get(), [
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+
+    def test_group_by_period_Y(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.group_by_period('Y')
+        z_map = z.get_map()
+        self.assertEqual(z_map[datetime.date(2001, 12, 31)].get(), [
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+
+    def test_get_max_by_period_Q(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.get_max_by_period('Q')
+        self.assertEqual(z.get(), [
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+
+    def test_get_max_by_period_Y(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.get_max_by_period('Y')
+        self.assertEqual(z.get(), [
+            (datetime.date(2001, 12, 31), 12),
+        ])
+
+    def test_get_min_by_period_Q(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.get_min_by_period('Q')
+        self.assertEqual(z.get(), [
+            (datetime.date(2001, 3, 31), 1),
+            (datetime.date(2001, 6, 30), 4),
+            (datetime.date(2001, 9, 30), 7),
+            (datetime.date(2001, 12, 31), 10),
+        ])
+
+    def test_get_min_by_period_Y(self):
+        x = TimeSeries([
+            (datetime.date(2001, 1, 31), 1),
+            (datetime.date(2001, 2, 28), 2),
+            (datetime.date(2001, 3, 31), 3),
+            (datetime.date(2001, 4, 30), 4),
+            (datetime.date(2001, 5, 31), 5),
+            (datetime.date(2001, 6, 30), 6),
+            (datetime.date(2001, 7, 31), 7),
+            (datetime.date(2001, 8, 31), 8),
+            (datetime.date(2001, 9, 30), 9),
+            (datetime.date(2001, 10, 31), 10),
+            (datetime.date(2001, 11, 30), 11),
+            (datetime.date(2001, 12, 31), 12),
+        ])
+        z = x.get_min_by_period('Y')
+        self.assertEqual(z.get(), [
+            (datetime.date(2001, 12, 31), 1),
+        ])

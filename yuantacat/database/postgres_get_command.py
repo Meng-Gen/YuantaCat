@@ -40,6 +40,8 @@ class PostgresGetCommnad():
             'StockDividendsFromRetainedEarnings' : u"select release_date, stmt_date, value from dividend_policy where stock_symbol = %(stock_symbol)s and account = '盈餘配股'",
             'StockDividendsFromCapitalReserve' : u"select release_date, stmt_date, value from dividend_policy where stock_symbol = %(stock_symbol)s and account = '公積配股'",
             'EmployeeStockBonusRatio' : u"select release_date, stmt_date, value from dividend_policy where stock_symbol = %(stock_symbol)s and account = '員工配股率'",
+            'StockPrice' : u"select release_date, stmt_date, value from stock_price where stock_symbol = %(stock_symbol)s and account = 'Close'",
+            'BookValue' : u"select release_date, stmt_date, value from financial_analysis where stock_symbol = %(stock_symbol)s and period = %(period)s and account = '每股淨值(元)'",
         }
 
     def get(self, operation, param):

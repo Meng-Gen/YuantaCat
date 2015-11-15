@@ -160,3 +160,57 @@ class TimeSeries(object):
             prev_stmt_date, prev_value = self.time_series[i - 1]
             output.append((stmt_date, prev_value))
         return TimeSeries(output)
+
+    def group_by_period(self, period):
+        if period == 'Q':
+            return self.group_by_quarter()
+        elif period == 'Y':
+            return self.group_by_year()
+
+    def group_by_quarter(self):
+        group_map = {}
+        time_series_map = self.get_map()
+        for stmt_date, value in self.time_series:
+            key = self.date_utils.get_last_date_of_quarter(stmt_date)
+            if key not in group_map:
+                group_map[key] = []
+            group_map[key].append((stmt_date, value))
+        output = []          
+        for key in group_map:
+            output.append((key, TimeSeries(group_map[key])))
+        return TimeSeries(output)
+
+    def group_by_year(self):
+        group_map = {}
+        time_series_map = self.get_map()
+        for stmt_date, value in self.time_series:
+            key = self.date_utils.get_last_date_of_year(stmt_date)
+            if key not in group_map:
+                group_map[key] = []
+            group_map[key].append((stmt_date, value))
+        output = []          
+        for key in group_map:
+            output.append((key, TimeSeries(group_map[key])))
+        return TimeSeries(output)
+
+    def get_max_by_period(self, period):
+        output = []
+        group = self.group_by_period(period).get()
+        for key, group_value in group:
+            group_time_series = group_value.get_map()
+            output.append((key, max(group_time_series.values())))
+        return TimeSeries(output)
+
+    def get_min_by_period(self, period):
+        output = []
+        group = self.group_by_period(period).get()
+        for key, group_value in group:
+            group_time_series = group_value.get_map()
+            output.append((key, min(group_time_series.values())))
+        return TimeSeries(output)
+
+    def annualize(self, period):
+        if period == 'Q':
+            return self.scalar(4)
+        elif period == 'Y':
+            return self
