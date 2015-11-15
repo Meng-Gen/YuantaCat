@@ -10,6 +10,7 @@ from yuantacat.report.liquidity_data_creator import LiquidityDataCreator
 from yuantacat.report.operating_revenue_data_creator import OperatingRevenueDataCreator
 from yuantacat.report.profitability_data_creator import ProfitabilityDataCreator
 from yuantacat.report.revenue_index_data_creator import RevenueIndexDataCreator
+from yuantacat.report.kn_data_creator import KnDataCreator
 
 import logging
 
@@ -29,16 +30,19 @@ class ReportPipeline():
             LiquidityDataCreator(),
             ProfitabilityDataCreator(),
             RevenueIndexDataCreator(),
+            KnDataCreator(),
         ]
 
-    def run(self):
+    def run(self):        
         stock_symbol_list = EntryListHelper().get_stock_symbol_list()
+        entry_count = len(stock_symbol_list)
+        curr_count = 0
         for entry in stock_symbol_list:
+            curr_count += 1
+            self.logger.info('report: {0} (progress: {1}/{2})'.format(entry, curr_count, entry_count))
             self.__run_stock_symbol(entry)
 
     def __run_stock_symbol(self, entry):
-        self.logger.info('run report data creator list: {0}'.format(entry))
-
         param = self.__build_param(entry['stock_symbol'])
 
         creator_list = self.default_creator_list

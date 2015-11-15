@@ -33,7 +33,7 @@ class YuantaCat():
         self.run_cash_flow()
         self.run_financial_analysis()
         self.run_stock_price()
-        #self.run_report_pipeline()
+        self.run_report_pipeline()
 
     def run_stock_symbol(self):
         StockSymbolPipeline().run()
