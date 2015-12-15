@@ -23,6 +23,10 @@ class YuantaCat():
         self.logger = logging.getLogger(__name__)
 
     def run(self):
+        #self.run_remote()
+        self.run_local()
+
+    def run_remote(self):
         self.run_stock_symbol()
         self.run_dividend_policy()
         self.run_capital_increase_history()
@@ -33,6 +37,8 @@ class YuantaCat():
         self.run_cash_flow()
         self.run_financial_analysis()
         self.run_stock_price()
+
+    def run_local(self):
         self.run_report_pipeline()
 
     def run_stock_symbol(self):
