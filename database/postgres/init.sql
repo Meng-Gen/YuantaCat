@@ -238,3 +238,27 @@ WITH (
 );
 ALTER TABLE financial_analysis
   OWNER TO stockcat;  
+
+--------------------------------------------------------------------------------
+-- Table: stock price
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS stock_price;
+
+CREATE TABLE stock_price
+(
+  creation_dt timestamp without time zone DEFAULT now(),
+  release_date date NOT NULL,
+  stock_symbol text NOT NULL,
+  stmt_date date NOT NULL,
+  account text NOT NULL,
+  account_order smallint NOT NULL,
+  value double precision,
+  period char(1),
+  CONSTRAINT stock_price_unique_key UNIQUE (release_date, stock_symbol, stmt_date, account, account_order, period)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE stock_price
+  OWNER TO stockcat;  

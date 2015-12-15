@@ -16,6 +16,7 @@ class PostgresStoreCommand():
             'IncomeStatementFeed' : 'INSERT INTO income_statement(release_date,stock_symbol,stmt_date,account,account_order,value,period) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s, %(period)s)',
             'CashFlowFeed' : 'INSERT INTO cash_flow(release_date,stock_symbol,stmt_date,account,account_order,value,period) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s, %(period)s)',
             'FinancialAnalysisFeed' : 'INSERT INTO financial_analysis(release_date,stock_symbol,stmt_date,account,account_order,value,period) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s, %(period)s)',
+            'StockPriceFeed' : 'INSERT INTO stock_price(release_date,stock_symbol,stmt_date,account,account_order,value,period) VALUES (%(release_date)s, %(stock_symbol)s, %(stmt_date)s, %(account)s, %(account_order)s, %(value)s, %(period)s)',
         }
 
     def store(self, feed):

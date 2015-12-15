@@ -32,6 +32,8 @@ class Spider():
             market_type = param['market_type']
             output['market_type'] = market_type
             output['market_mode'] = self.__extend_market_mode(market_type)
+        if 'market_category' in param:
+            output['market_category'] = param['market_category']
         return output
 
     def __extend_market_mode(self, market_type):
